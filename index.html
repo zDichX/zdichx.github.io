@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zDich</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            background-image: url(src/title.png);
+            background-position: center;
+            background-size: 350px;
+            background-repeat: no-repeat;
+        }
+        @media screen {
+            
+        }
+        .background {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-position: center;
+            background-size: cover;
+            margin-top: 200vh;
+            will-change: margin-top;
+            animation-name: example;
+            animation-duration: 2s;
+            animation-fill-mode:forwards;
+            animation-timing-function:ease-out;
+        }
+        @keyframes example {
+            from {filter: brightness(100%)}
+            to {filter: brightness(30%)}
+        }
+        .wrapper {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: left;
+            user-select: none;
+            opacity: 0.5;
+            transform: scale(0) rotate(0deg);
+            will-change: transform, opacity;
+        }
+
+        .title {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            font-size: 1.5em;
+            margin-bottom: 40px;
+        }
+
+        .action-btn {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #61dafb;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #282c34;
+        }
+
+        .card {
+            position: relative;
+            background: linear-gradient(135deg, #7EE8FA, #EEC0C6);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+
+            width: 400px;
+            max-width: 80vw;
+            height: 150px;
+            
+        }
+
+            .overlay {
+                position: absolute;
+                /* top: 0; */
+                /* left: 0; */ /* 从左上角开始 */
+                width: 150px; /* 覆盖整个容器 */
+                height: 1000px;
+                /* background-color: rgba(0, 0, 0, 0); */ /* 半透明黑色 */
+                /* pointer-events: none; */ /* 使遮罩不可点击 */
+                transform: rotate(45deg); /* 旋转45度 */
+                /* transform-origin: center; */ /* 旋转点为中心 */
+                border: 50px solid rgba(0, 0, 0, 0.5);
+                /* outline: 2px solid black; */
+            }
+        
+        /* @media (orientation: portrait) {
+            .card {
+                width: 200px;
+                flex-direction: column;
+            }
+            .logo {
+                width: 80px;
+                height: 80px;
+            }
+        } */
+        .logo {
+            background: linear-gradient(135deg, #ffcc00, #ff9900);
+            background-image: url('src/avatar.jpg');
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+
+            position: absolute;
+            left: 20px;
+            width: 150px;
+            height: 150px;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        .info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            left: 200px;
+            position: absolute;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        .name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .title {
+            font-size: 16px;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        .contact {
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .contact a {
+            color: #ffcc00;
+            text-decoration: none;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="wrapper">
+        <div class="container">
+            <div class="card">
+
+                <div class="logo">
+                    <div class="overlay"></div>
+                </div>
+                
+                <div class="info">
+                    <div class="name">&lt;/zDich&gt;</div>
+                    <div class="title">"I truly present here"</div>
+                    <div class="contact">
+                        <div>zDich@icloud.com</div>
+                        <div></div>
+                        <div><a href="http://zdich.github.io">zdich.github.io</a></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
