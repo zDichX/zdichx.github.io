@@ -1,6 +1,6 @@
 window.addEventListener('load', () => {
-    const container = document.querySelector('.container');
-    gsap.to(container, { 
+    document.querySelector('.background').style.animationPlayState = 'running';
+    gsap.to(document.querySelector('.container'), { 
         duration: 1.5, 
         delay: 0.5,
         opacity: 1, 
@@ -8,8 +8,7 @@ window.addEventListener('load', () => {
         rotate: -4,
         ease: 'elastic.out(0.8, 0.5)' 
     });
-    const background = document.querySelector('.background');
-    gsap.to(background, { 
+    gsap.to(document.querySelector('.background'), { 
         duration: 1, 
         delay: 0,
         marginTop: 0, 
@@ -21,15 +20,12 @@ window.addEventListener('load', () => {
         const backgroundElement = document.querySelector('.background');
     
         if (hour >= 6 && hour < 18) {
-            backgroundElement.style.backgroundImage = "url('src/bg.png')";
+            backgroundElement.style.backgroundImage = "url('assets/bg.png')";
         } else {
-            backgroundElement.style.backgroundImage = "url('src/bg_dark.png')";
+            backgroundElement.style.backgroundImage = "url('assets/bg_dark.png')";
         }
     }
-    
     updateBackground();
-    
-    setInterval(updateBackground, 3600000); // 3600000 毫秒 = 1小时
-
+    setInterval(updateBackground, 3600000);
 });
 
