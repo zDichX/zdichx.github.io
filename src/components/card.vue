@@ -25,8 +25,8 @@ onMounted(() => {
       duration: 1, 
       delay: 1,
       opacity: 1, 
-      marginTop: '10px',
-      ease: 'power2.inOut',
+      marginTop: '25px',
+      ease: 'elastic.out(3,0.3)',
     });
   }
 
@@ -94,7 +94,7 @@ onMounted(() => {
         </div>
         <div class='info'>
           <div class='name'>&lt;/zDich&gt;</div>
-          <div class='bio'>'I truly present here'</div>
+          <div class='bio'>"I truly present here"</div>
           <div class='contact'>📧zDichX@iCloud.com<div>
               <a href='https://zdich.montaigne.io/z-dich'>💤Introduction(🇨🇳)</a>
             </div>
@@ -134,7 +134,6 @@ onMounted(() => {
     padding: 20px;
     max-width: 80vw;
     height: 150px;
-    line-height: 150%;
     white-space: nowrap
 }
 .overlay {
@@ -167,7 +166,7 @@ onMounted(() => {
     align-items: flex-start;
     margin-left: 1.5vw;
     margin-right: 1vw;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
 }
 .name {
     font-weight: bold;
@@ -178,7 +177,8 @@ onMounted(() => {
     margin-bottom: 10px;
 }
 .contact {
-    margin-top: 30px;
+    font-size: 12px;
+    margin-top: 60px;
     opacity: 0;
 }
 .contact a {
