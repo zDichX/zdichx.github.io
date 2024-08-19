@@ -1,18 +1,25 @@
 <script setup lang="ts">
 import { gsap } from 'gsap';
-import { onMounted } from 'vue';
+import { onMounted, nextTick, ref } from 'vue';
 
-onMounted(() => {
-    const containerElement = document.querySelector('.container') as HTMLElement;
+const containerElement = ref<HTMLElement | null>(null);
 
-    if (containerElement) {        
-        gsap.to(containerElement, { 
+onMounted(async () => {
+    await nextTick();
+
+    containerElement.value = document.querySelector('.container') as HTMLElement;
+
+    if (containerElement.value) {
+        gsap.to(containerElement.value, { 
             duration: 1.5, 
             delay: 0.5,
             opacity: 1, 
             scale: 1, 
             rotate: -4,
-            ease: 'elastic.out(0.8, 0.5)' 
+            ease: 'elastic.out(0.8, 0.5)',
+            onComplete: () => {
+                console.log('Animation complete!');
+            }
         });
     }
 });

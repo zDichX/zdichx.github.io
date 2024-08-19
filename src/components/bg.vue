@@ -1,43 +1,45 @@
 <script setup lang="ts">
 import { gsap } from 'gsap';
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
+
+const backgroundElement = ref<HTMLElement | null>(null);
+
+const updateBackground = () => {
+    const now = new Date();
+    const hour = now.getHours();
+
+    const dayImage = new URL('../assets/bg.png', import.meta.url).href;
+    const nightImage = new URL('../assets/bg_dark.png', import.meta.url).href;
+
+    if (backgroundElement.value) {
+        backgroundElement.value.style.backgroundImage = hour >= 6 && hour < 18
+            ? `url(${dayImage})`
+            : `url(${nightImage})`;
+    }
+};
 
 onMounted(() => {
-    const backgroundElement = document.querySelector('.background') as HTMLElement;
-    if(backgroundElement) {
-        gsap.to(backgroundElement, { 
-            duration: 1, 
-            delay: 0,
-            marginTop: 0, 
-            ease: 'quint.inOut' 
-        });
+    backgroundElement.value = document.querySelector('.background') as HTMLElement;
 
-        gsap.to(backgroundElement, { 
-            duration: 2, 
-            delay: 0,
-            filter: "brightness(0.3)",
-            ease: 'quad.out' 
-        });
-    }
-    function updateBackground(): void {
-        const now: Date = new Date();
-        const hour: number = now.getHours();
+    window.onload = () => {
+        if (backgroundElement.value) {
+            const tl = gsap.timeline();
+            tl.to(backgroundElement.value, { 
+                duration: 1, 
+                marginTop: 0, 
+                ease: 'quint.inOut' 
+            })
+            .to(backgroundElement.value, { 
+                duration: 2, 
+                filter: "brightness(0.3)",
+                ease: 'quad.out' 
+            }, "-=0.5");
 
-        const dayImage = new URL('../assets/bg.png', import.meta.url).href;
-        const nightImage = new URL('../assets/bg_dark.png', import.meta.url).href;
-
-        if (backgroundElement) {
-            if (hour >= 6 && hour < 18) {
-                backgroundElement.style.backgroundImage = `url(${dayImage})`;
-            } else {
-                backgroundElement.style.backgroundImage = `url(${nightImage})`;
-            }
+            updateBackground();
+            setInterval(updateBackground, 3600000);
         }
     }
-
-    updateBackground();
-    setInterval(updateBackground, 3600000);
-})
+});
 </script>
 
 <template>
