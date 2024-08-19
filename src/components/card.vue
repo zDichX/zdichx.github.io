@@ -12,14 +12,11 @@ onMounted(async () => {
     if (containerElement.value) {
         gsap.to(containerElement.value, { 
             duration: 1.5, 
-            delay: 0.5,
+            delay: 1,
             opacity: 1, 
             scale: 1, 
             rotate: -4,
             ease: 'elastic.out(0.8, 0.5)',
-            onComplete: () => {
-                console.log('Animation complete!');
-            }
         });
     }
 });
@@ -61,6 +58,7 @@ onMounted(async () => {
 }
 .container {
     text-align: left;
+    -webkit-user-select: none; 
     user-select: none;
     opacity: 0.5;
     transform: scale(0) rotate(0deg);
