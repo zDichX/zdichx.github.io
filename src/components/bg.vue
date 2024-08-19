@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang='ts'>
 import { gsap } from 'gsap';
 import { onMounted, nextTick, ref } from 'vue';
 
@@ -27,14 +27,14 @@ onMounted(async () => {
         tl.to(backgroundElement.value, { 
             duration: 2, 
             marginTop: 0, 
-            clipPath: "inset(0% 0 0 0)",
+            clipPath: 'inset(0% 0 0 0)',
             ease: 'quint.inOut' 
         })
         .to(backgroundElement.value, { 
             duration: 2, 
-            filter: "brightness(0.3)",
+            filter: 'brightness(0.3)',
             ease: 'quad.out' 
-        }, "-=1");
+        }, '-=1');
 
         updateBackground();
         setInterval(updateBackground, 3600000);
@@ -44,7 +44,7 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div class="background"></div>
+    <div class='background'></div>
 </template>
 
 <style scoped>
@@ -57,6 +57,6 @@ onMounted(async () => {
     clip-path: inset(50% 0 0 0);
     margin-top: 100vh;
     filter: brightness(1);
-    will-change: margin-top, filter, clip-path;
+    /* will-change: margin-top, filter, clip-path; */
 }
 </style>

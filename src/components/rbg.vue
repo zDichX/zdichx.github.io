@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang='ts'>
 import { gsap } from 'gsap';
 import { onMounted, nextTick, ref } from 'vue';
 
@@ -13,15 +13,15 @@ onMounted(async () => {
         gsap.to(rootbgElement.value, { 
             duration: 1, 
             delay: 0.5,
-            zoom: "0.5",
-            filter: "blur(20px)",
+            zoom: '0.5',
+            filter: 'blur(20px)',
             ease: 'power4.inOut',
         });
     }
 });
 </script>
 <template>
-    <img src="../assets/title.png" alt="rootbg" class="rootbg">
+    <img src='../assets/title.png' alt='rootbg' class='rootbg'>
 </template>
 <style>
 .rootbg {
@@ -33,7 +33,7 @@ onMounted(async () => {
   max-width: 80vw;
   max-height: 20vh;
   z-index: -1;
-  will-change: transform,filter;
+  /* will-change: transform,filter; */
 
 }
 </style>
