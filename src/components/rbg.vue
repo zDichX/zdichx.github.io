@@ -13,8 +13,8 @@ onMounted(async () => {
         gsap.to(rootbgElement.value, { 
             duration: 1, 
             delay: 0.5,
+            zoom: "0.5",
             filter: "blur(20px)",
-            scale: 0.5, 
             ease: 'power4.inOut',
         });
     }
@@ -27,15 +27,13 @@ onMounted(async () => {
 .rootbg {
   position: absolute;
   overflow: hidden;
-  scale: 1;
+  transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
   max-width: 80vw;
   max-height: 20vh;
-  transform: translate(-50%, -50%);
   z-index: -1;
-
-  will-change: filter, scale;
+  will-change: transform,filter;
 
 }
 </style>
