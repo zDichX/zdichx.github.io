@@ -4,99 +4,57 @@ import { onMounted, ref } from 'vue';
 
 const containerElement = ref<HTMLElement | null>(null);
 const contactElement = ref<HTMLElement | null>(null);
-
+const avatarElement = ref<HTMLElement | null>(null);
+const nameElement = ref<HTMLElement | null>(null);
+const bioElement = ref<HTMLElement | null>(null);
 const characters = ref<string[]>([]);
+
 onMounted(() => {
-  containerElement.value = document.querySelector('.container') as HTMLElement;
-  if (containerElement.value) {
-    gsap.to(containerElement.value, { 
-      duration: 1.5, 
-      delay: 1,
-      opacity: 1, 
-      scale: 1, 
-      rotate: -4,
-      ease: 'elastic.out(0.8, 0.5)',
-    });
+  if (avatarElement.value && containerElement.value && contactElement.value) {
+    gsap.to(avatarElement.value, {duration: 0.5, delay: 1.1, filter:'blur(0px)', ease: 'power4.inOut'});
+    gsap.to(containerElement.value, {duration: 1.5, delay: 1, opacity: 1, scale: 1, rotate: -4, ease: 'elastic.out(0.8, 0.5)'});
+    gsap.to(contactElement.value, {duration: 1, delay: 1.8, opacity: 1, marginTop: '0px',ease: 'power4.inOut'});
   }
 
-  contactElement.value = document.querySelector('.contact') as HTMLElement;
-  if (containerElement.value) {
-    gsap.to(contactElement.value, {
-      duration: 1, 
-      delay: 1,
-      opacity: 1, 
-      marginTop: '25px',
-      ease: 'elastic.out(3,0.3)',
-    });
+  const applyAnimation = (element: HTMLElement | null, fs: string) => {
+    if (element){
+      const text = element.textContent || '';
+      characters.value = text.split('');
+
+      element.textContent = '';
+      
+      characters.value.forEach(char => {
+        const span = document.createElement('span')
+        span.textContent = char;
+        span.className = 'char';
+        (element as HTMLElement).appendChild(span);
+      });
+
+      const name = (element as HTMLElement).querySelectorAll('.char')
+      gsap.fromTo(name, 
+        { opacity: 0.5, fontSize: 0}, 
+        { opacity: 1, fontSize: fs, stagger: 0.04, ease: 'power1.out', duration: 0.2, delay: 1 }
+      );
+    }
   }
+  applyAnimation(nameElement.value, '24px');
+  applyAnimation(bioElement.value, '16px');
 
-  const applyAnimation = (selector: string, fs: string) => {
-    const elements = document.querySelectorAll(selector);
-    elements.forEach(element => {
-      if(element) {
-        const text = (element as HTMLElement).textContent || '';
-        characters.value = text.split('');
-
-        (element as HTMLElement).textContent = '';
-        
-        characters.value.forEach(char => {
-          const span = document.createElement('span')
-          span.textContent = char;
-          span.className = 'char';
-          (element as HTMLElement).appendChild(span);
-        });
-
-        const name = (element as HTMLElement).querySelectorAll('.char')
-        gsap.fromTo(name, 
-          { opacity: 0.5, fontSize: 0}, 
-          { opacity: 1, fontSize: fs, stagger: 0.04, ease: 'power1.out', duration: 0.2, delay: 1 }
-        );
-      }
-    });
-  }
-  applyAnimation('.name', '24px');
-  applyAnimation('.bio', '16px');
 });
-
-
-
-
-  // const nameElement = document.querySelector('.name') as HTMLElement;
-  // if (nameElement) {
-  //   const text = nameElement.textContent || '';
-  //   characters.value = text.split('');
-
-  //   nameElement.textContent = '';
-
-  //   characters.value.forEach(char => {
-  //     const span = document.createElement('span');
-  //     span.textContent = char;
-  //     span.className = 'char';
-  //     nameElement.appendChild(span);
-  //   });
-
-  //   const name = document.querySelectorAll('.name .char');
-  //   gsap.fromTo(name, 
-  //     { opacity: 0, fontSize: 0}, 
-  //     { opacity: 1, fontSize: 24, stagger: 0.05, ease: 'none', duration: 0.2, delay: 1 }
-  //   );
-    
-  // }
-
 </script>
 
 <template>
   <div class='wrapper'>
-    <div class='container'>
+    <div class='container' ref="containerElement">
       <div class='card'>
-        <div class='logo'>
+        <div class='avatar' ref="avatarElement">
           <div class='overlay'></div>
         </div>
         <div class='info'>
-          <div class='name'>&lt;/zDich&gt;</div>
-          <div class='bio'>"I truly present here"</div>
-          <div class='contact'>📧zDichX@iCloud.com<div>
-              <a href='https://zdich.montaigne.io/z-dich'>💤Introduction(🇨🇳)</a>
+          <div class='name' ref="nameElement">&lt;/zDich&gt;</div>
+          <div class='bio' ref="bioElement">"I truly present here"</div>
+          <div class='contact' ref="contactElement">zDichX@iCloud.com<div>
+              <a href='https://zdich.montaigne.io/z-dich'>Introduction(🇨🇳)</a>
             </div>
           </div>
         </div>
@@ -143,7 +101,7 @@ onMounted(() => {
     transform: rotate(45deg);
     border: 50px solid rgba(0, 0, 0, 0.5);
 }
-.logo {
+.avatar {
     position: relative;
     background: linear-gradient(135deg, #ffcc00, #ff9900);
     background-image: url('../assets/avatar.jpg');
@@ -158,18 +116,20 @@ onMounted(() => {
     overflow: hidden;
     border-radius: 20px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    filter: blur(20px);
 }
 .info {
+    font-weight: bold;
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-left: 1.5vw;
-    margin-right: 1vw;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+    margin-left: 1.5vh;
+    margin-right: 1vh;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 .name {
-    font-weight: bold;
+    
     margin-bottom: 5px;
 }
 .bio {
@@ -178,7 +138,7 @@ onMounted(() => {
 }
 .contact {
     font-size: 12px;
-    margin-top: 60px;
+    margin-top: 30px;
     opacity: 0;
 }
 .contact a {

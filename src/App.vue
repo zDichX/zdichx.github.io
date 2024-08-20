@@ -1,13 +1,13 @@
 <script setup lang='ts'>
+import rbg from './components/rbg.vue';
 import bg from './components/bg.vue';
 import card from './components/card.vue';
-import rbg from './components/rbg.vue';
 </script>
 
 <template>
+    <rbg />
     <bg />
     <card />
-    <rbg />
 </template>
 
 <style scoped>
