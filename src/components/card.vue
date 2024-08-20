@@ -125,7 +125,7 @@ onMounted(() => {
     flex-direction: column;
     align-items: flex-start;
     margin-left: 1.5vh;
-    margin-right: 1vh;
+    margin-right: 0;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 .name {
@@ -138,7 +138,7 @@ onMounted(() => {
 }
 .contact {
     font-size: 12px;
-    margin-top: 30px;
+    margin-top: 50px;
     opacity: 0;
 }
 .contact a {
