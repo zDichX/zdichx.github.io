@@ -22,7 +22,7 @@ onMounted(async () => {
 </script>
 <template>
     <div class="rbgcontainer">
-        <img src='../assets/title.png' alt='rootbg' class='rootbg'>
+        <img src='../assets/title.webp' alt='rootbg' class='rootbg'>
     </div>
     
 </template>

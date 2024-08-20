@@ -53,9 +53,8 @@ onMounted(() => {
         <div class='info'>
           <div class='name' ref="nameElement">&lt;/zDich&gt;</div>
           <div class='bio' ref="bioElement">"I truly present here"</div>
-          <div class='contact' ref="contactElement">zDichX@iCloud.com<div>
-              <a href='https://zdich.montaigne.io/z-dich'>Introduction(🇨🇳)</a>
-            </div>
+          <div class='contact' ref="contactElement">zDichX@iCloud.com
+            <div><a href='https://zdich.montaigne.io/z-dich'>Introduction(🇨🇳)</a></div>
           </div>
         </div>
       </div>
@@ -104,7 +103,7 @@ onMounted(() => {
 .avatar {
     position: relative;
     background: linear-gradient(135deg, #ffcc00, #ff9900);
-    background-image: url('../assets/avatar.jpg');
+    background-image: url('../assets/avatar.webp');
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -115,7 +114,7 @@ onMounted(() => {
     min-height: 150px;
     overflow: hidden;
     border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
     filter: blur(20px);
 }
 .info {
@@ -126,7 +125,7 @@ onMounted(() => {
     align-items: flex-start;
     margin-left: 1.5vh;
     margin-right: 0;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4); 
 }
 .name {
     

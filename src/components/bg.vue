@@ -8,8 +8,8 @@ const updateBackground = () => {
     const now = new Date();
     const hour = now.getHours();
 
-    const dayImage = new URL('../assets/bg.png', import.meta.url).href;
-    const nightImage = new URL('../assets/bg_dark.png', import.meta.url).href;
+    const dayImage = new URL('../assets/bg.webp', import.meta.url).href;
+    const nightImage = new URL('../assets/bg_dark.webp', import.meta.url).href;
 
     if (backgroundElement.value) {
         backgroundElement.value.style.backgroundImage = hour >= 6 && hour < 18
@@ -28,7 +28,7 @@ onMounted(async () => {
             duration: 2, 
             marginTop: 0, 
             clipPath: 'inset(0% 0 0 0)',
-            ease: 'quint.inOut' 
+            ease: 'power4.inOut' 
         })
         .to(backgroundElement.value, { 
             duration: 2, 
@@ -54,8 +54,8 @@ onMounted(async () => {
     position: fixed;
     background-position: center;
     background-size: cover;
-    clip-path: inset(50% 0 0 0);
-    margin-top: 100vh;
+    clip-path: inset(100% 0 0 0);
+    margin-top: 30vh;
     filter: brightness(1);
     /* will-change: margin-top, filter, clip-path; */
 }
