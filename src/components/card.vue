@@ -1,6 +1,6 @@
 <script setup lang='ts'>
 import { gsap } from 'gsap';
-import { onMounted, ref } from 'vue';
+import { onMounted, nextTick, ref } from 'vue';
 
 const containerElement = ref<HTMLElement | null>(null);
 const contactElement = ref<HTMLElement | null>(null);
@@ -10,7 +10,8 @@ const bioElement = ref<HTMLElement | null>(null);
 const contact_aElement = ref<HTMLElement | null>(null);
 const characters = ref<string[]>([]);
 
-onMounted(() => {
+onMounted(async () => {
+  await nextTick();
   if (avatarElement.value && containerElement.value && contactElement.value) {
     gsap.to(avatarElement.value, {duration: 0.5, delay: 1.1, filter:'blur(0px)', ease: 'power4.inOut'});
     gsap.to(containerElement.value, {duration: 1.5, delay: 1, opacity: 1, scale: 1, rotate: -4, ease: 'elastic.out(0.8, 0.5)'});
@@ -144,6 +145,7 @@ onMounted(() => {
     line-height: 1.5;
 }
 .contact a {
+    overflow: visible;
     text-decoration: none;
     color: white;
     text-shadow: 
