@@ -129,7 +129,6 @@ onMounted(async () => {
     text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4); 
 }
 .name {
-    
     margin-bottom: 5px;
 }
 .bio {
