@@ -6,13 +6,12 @@ const rootbgElement = ref<HTMLElement | null>(null);
 
 onMounted(async () => {
     await nextTick();
-
     rootbgElement.value = document.querySelector('.rbgcontainer') as HTMLElement;
 
     if (rootbgElement.value) {
-        gsap.to(rootbgElement.value, { 
+        gsap.to(rootbgElement.value, {
             duration: 1, 
-            delay: 0.5,
+            // delay: 0.5,
             scale: 0.5,
             filter: 'blur(20px)',
             ease: 'power4.inOut',
@@ -42,6 +41,5 @@ onMounted(async () => {
     max-height: 20vh;
     z-index: -1;
     /* will-change: transform,filter; */
-
 }
 </style>

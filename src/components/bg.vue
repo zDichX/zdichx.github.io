@@ -1,22 +1,37 @@
 <script setup lang='ts'>
 import { gsap } from 'gsap';
-import { onMounted, nextTick, ref } from 'vue';
+import { onMounted, nextTick, ref, computed } from 'vue';
 
 const backgroundElement = ref<HTMLElement | null>(null);
 
-const updateBackground = () => {
-    const now = new Date();
-    const hour = now.getHours();
 
-    const dayImage = new URL('../assets/bg.webp', import.meta.url).href;
-    const nightImage = new URL('../assets/bg_dark.webp', import.meta.url).href;
+const currentHour = new Date().getHours();
 
-    if (backgroundElement.value) {
-        backgroundElement.value.style.backgroundImage = hour >= 6 && hour < 18
-            ? `url(${dayImage})`
-            : `url(${nightImage})`;
-    }
-};
+const imageUrl = ref<string>('');
+
+if (currentHour >= 6 && currentHour < 18) {
+  imageUrl.value = new URL('../assets/bg.webp', import.meta.url).href;
+} else {
+  imageUrl.value = new URL('../assets/bg_dark.webp', import.meta.url).href;
+}
+
+const setBackgroundImage = computed(() => ({
+  backgroundImage: `url(${imageUrl.value})`,
+}));
+
+// const updateBackground = () => {
+//     const now = new Date();
+//     const hour = now.getHours();
+
+//     const dayImage = new URL('../assets/bg.webp', import.meta.url).href;
+//     const nightImage = new URL('../assets/bg_dark.webp', import.meta.url).href;
+
+//     if (backgroundElement.value) {
+//         backgroundElement.value.style.backgroundImage = hour >= 6 && hour < 18
+//             ? `url(${dayImage})`
+//             : `url(${nightImage})`;
+//     }
+// };
 
 onMounted(async () => {
     await nextTick();
@@ -36,15 +51,15 @@ onMounted(async () => {
             ease: 'quad.out' 
         }, '-=1');
 
-        updateBackground();
-        setInterval(updateBackground, 3600000);
+        // updateBackground();
+        // setInterval(updateBackground, 3600000);
     }
     
 });
 </script>
 
 <template>
-    <div class='background'></div>
+    <div class='background' :style="setBackgroundImage"></div>
 </template>
 
 <style scoped>

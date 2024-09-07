@@ -13,9 +13,9 @@ const characters = ref<string[]>([]);
 onMounted(async () => {
   await nextTick();
   if (avatarElement.value && containerElement.value && contactElement.value) {
-    gsap.to(avatarElement.value, {duration: 0.5, delay: 1.1, filter:'blur(0px)', ease: 'power4.inOut'});
-    gsap.to(containerElement.value, {duration: 1.5, delay: 1, opacity: 1, scale: 1, rotate: -4, ease: 'elastic.out(0.8, 0.5)'});
-    gsap.to(contactElement.value, {duration: 1, delay: 1.8, opacity: 1, marginTop: '0px', ease: 'power4.inOut'});
+    gsap.to(containerElement.value, {duration: 1.5, delay: 0, opacity: 1, scale: 1, rotate: -4, ease: 'elastic.out(0.8, 0.5)'});
+    gsap.to(avatarElement.value, {duration: 0.5, delay: 0.1, filter:'blur(0px)', ease: 'power4.inOut'});
+    gsap.to(contactElement.value, {duration: 1, delay: 0.8, opacity: 1, marginTop: '0px', ease: 'power4.inOut'});
     gsap.to(contact_aElement.value, {duration: 5, repeat: -1, filter: "hue-rotate(360deg)", ease: 'none'})
   }
 
@@ -36,7 +36,7 @@ onMounted(async () => {
       const name = (element as HTMLElement).querySelectorAll('.char')
       gsap.fromTo(name, 
         { opacity: 0.5, fontSize: 0}, 
-        { opacity: 1, fontSize: fs, stagger: 0.04, ease: 'power1.out', duration: 0.2, delay: 1 }
+        { opacity: 1, fontSize: fs, stagger: 0.04, ease: 'power1.out', duration: 0.2}
       );
     }
   }
@@ -65,8 +65,6 @@ onMounted(async () => {
 </template>
 
 <style scoped>
-
-
 .wrapper {
     width: 100vw;
     height: 100vh;
@@ -148,6 +146,7 @@ onMounted(async () => {
     overflow: visible;
     text-decoration: none;
     color: white;
+    -webkit-text-shadow: 0 0 4px #ffcc00;
     text-shadow: 
     0 0 1px #ffcc00,
     0 0 2px #ffcc00,
