@@ -112,7 +112,7 @@ onMounted(async () => {
     max-width: 80vw;
     max-height: 20vh;
     z-index: -1;
-    border: 10px dashed white;
+    border: 0.5em dashed white;
     border-radius: 30px;
     padding-top: 20px;
     padding-bottom: 20px;

@@ -136,6 +136,7 @@ onMounted(async () => {
     margin-bottom: 10px;
 }
 .contact {
+    overflow: visible;
     font-size: 12px;
     margin-top: 50px;
     opacity: 0;
