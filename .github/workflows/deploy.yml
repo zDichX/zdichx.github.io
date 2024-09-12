@@ -2,11 +2,8 @@
 name: Deploy Vue.js app to Pages
 
 on:
-  # 触发条件：当推送到默认分支时触发（例如 main 或 master）
   push:
-    branches: [main]  # 替换为你的默认分支名称
-
-  # 允许从 Actions 页面手动触发
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -14,7 +11,6 @@ permissions:
   pages: write
   id-token: write
 
-# 确保只允许一个部署任务在同一时间进行
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -44,7 +40,6 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # 上传构建输出的 dist 目录
           path: 'dist'
 
       - name: Deploy to GitHub Pages

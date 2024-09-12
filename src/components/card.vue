@@ -19,13 +19,13 @@ onMounted(async () => {
     gsap.to(contact_aElement.value, {duration: 5, repeat: -1, filter: "hue-rotate(360deg)", ease: 'none'})
   }
 
+  
   const applyAnimation = (element: HTMLElement | null, fs: string) => {
+    // 分词
     if (element){
       const text = element.textContent || '';
       characters.value = text.split('');
-
       element.textContent = '';
-      
       characters.value.forEach(char => {
         const span = document.createElement('span')
         span.textContent = char;
@@ -136,7 +136,6 @@ onMounted(async () => {
     margin-bottom: 10px;
 }
 .contact {
-    overflow: visible;
     font-size: 12px;
     margin-top: 50px;
     opacity: 0;

@@ -3,8 +3,6 @@ import { gsap } from 'gsap';
 import { onMounted, nextTick, ref, computed } from 'vue';
 
 const backgroundElement = ref<HTMLElement | null>(null);
-
-
 const currentHour = new Date().getHours();
 
 const imageUrl = ref<string>('');

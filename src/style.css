@@ -3,5 +3,10 @@ body {
   overflow: hidden;
   background-color: black;
   color: white;
-  font-family: Arial, sans-serif;
+  /* font-family: 'PlaypenSans-Bold', sans-serif; */
 }
+/* 
+@font-face {
+  font-family: 'PlaypenSans-Bold';
+  src: url('./assets/PlaypenSans-Bold.ttf') format('truetype');
+} */
