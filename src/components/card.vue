@@ -10,8 +10,14 @@ const bioElement = ref<HTMLElement | null>(null);
 const contact_aElement = ref<HTMLElement | null>(null);
 const characters = ref<string[]>([]);
 
+const avatarImage = new URL('../assets/avatar.webp', import.meta.url).href;
 onMounted(async () => {
   await nextTick();
+
+  if (avatarElement.value) {
+    avatarElement.value.style.backgroundImage = `url(${avatarImage})`;
+  }
+
   if (avatarElement.value && containerElement.value && contactElement.value) {
     gsap.to(containerElement.value, {duration: 1.5, delay: 0, opacity: 1, scale: 1, rotate: -4, ease: 'elastic.out(0.8, 0.5)'});
     gsap.to(avatarElement.value, {duration: 0.5, delay: 0.1, filter:'blur(0px)', ease: 'power4.inOut'});
@@ -19,7 +25,7 @@ onMounted(async () => {
     gsap.to(contact_aElement.value, {duration: 5, repeat: -1, filter: "hue-rotate(360deg)", ease: 'none'})
   }
 
-  
+
   const applyAnimation = (element: HTMLElement | null, fs: string) => {
     // 分词
     if (element){
@@ -96,7 +102,6 @@ onMounted(async () => {
 .avatar {
     position: relative;
     background: linear-gradient(135deg, #ffcc00, #ff9900);
-    background-image: url('../assets/avatar.webp');
     background-size: cover;
     display: flex;
     justify-content: center;
