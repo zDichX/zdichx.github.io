@@ -28,9 +28,9 @@ onMounted(async () => {
 
 
   const fromParams = { opacity: 0.5, fontSize: 0 };
-  const toParams1 = { opacity: 1, fontSize: '24px', stagger: 0.04, ease: 'power1.out', duration: 0.2 };
+  // const toParams1 = { opacity: 1, fontSize: '24px', stagger: 0.04, ease: 'power1.out', duration: 0.2 };
   const toParams2 = { opacity: 1, fontSize: '16px', stagger: 0.04, ease: 'power1.out', duration: 0.2 };
-  textSplitAnimation(nameElement.value, fromParams, toParams1);
+  // textSplitAnimation(nameElement.value, fromParams, toParams1);
   textSplitAnimation(bioElement.value, fromParams, toParams2);
 
 });
