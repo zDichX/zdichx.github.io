@@ -10,12 +10,14 @@
   },
   "dependencies": {
     "gsap": "^3.12.5",
-    "vue": "^3.4.37"
+    "npm-check-updates": "^17.1.9",
+    "npx": "^10.2.2",
+    "vue": "^3.5.12"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.1.2",
-    "typescript": "^5.5.3",
-    "vite": "^5.4.1",
-    "vue-tsc": "^2.0.29"
+    "@vitejs/plugin-vue": "^5.1.4",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10",
+    "vue-tsc": "^2.1.10"
   }
 }

@@ -1,14 +1,15 @@
 <script setup lang='ts'>
 import { gsap } from 'gsap';
 import { onMounted, nextTick, ref } from 'vue';
+import { textSplitAnimation } from '../utils/textSplitAnimation';
 
 const containerElement = ref<HTMLElement | null>(null);
 const contactElement = ref<HTMLElement | null>(null);
 const avatarElement = ref<HTMLElement | null>(null);
 const nameElement = ref<HTMLElement | null>(null);
 const bioElement = ref<HTMLElement | null>(null);
-const contact_aElement = ref<HTMLElement | null>(null);
-const characters = ref<string[]>([]);
+// const contact_aElement = ref<HTMLElement | null>(null);
+// const characters = ref<string[]>([]);
 
 const avatarImage = new URL('../assets/avatar.webp', import.meta.url).href;
 onMounted(async () => {
@@ -19,35 +20,18 @@ onMounted(async () => {
   }
 
   if (avatarElement.value && containerElement.value && contactElement.value) {
-    gsap.to(containerElement.value, {duration: 1.5, delay: 0, opacity: 1, scale: 1, rotate: -4, ease: 'elastic.out(0.8, 0.5)'});
-    gsap.to(avatarElement.value, {duration: 0.5, delay: 0.1, filter:'blur(0px)', ease: 'power4.inOut'});
+    gsap.to(containerElement.value, {duration: 1.5, delay: 0, opacity: 1, scale: 1, ease: 'elastic.out(0.8, 0.5)'});
+    // gsap.to(avatarElement.value, {duration: 0.5, delay: 0.1, filter:'blur(0px)', ease: 'power4.inOut'});
     gsap.to(contactElement.value, {duration: 1, delay: 0.8, opacity: 1, marginTop: '0px', ease: 'power4.inOut'});
-    gsap.to(contact_aElement.value, {duration: 5, repeat: -1, filter: "hue-rotate(360deg)", ease: 'none'})
+    // gsap.to(contact_aElement.value, {duration: 5, repeat: -1, filter: "hue-rotate(360deg)", ease: 'none'})
   }
 
 
-  const applyAnimation = (element: HTMLElement | null, fs: string) => {
-    // 分词
-    if (element){
-      const text = element.textContent || '';
-      characters.value = text.split('');
-      element.textContent = '';
-      characters.value.forEach(char => {
-        const span = document.createElement('span')
-        span.textContent = char;
-        span.className = 'char';
-        (element as HTMLElement).appendChild(span);
-      });
-
-      const name = (element as HTMLElement).querySelectorAll('.char')
-      gsap.fromTo(name, 
-        { opacity: 0.5, fontSize: 0}, 
-        { opacity: 1, fontSize: fs, stagger: 0.04, ease: 'power1.out', duration: 0.2}
-      );
-    }
-  }
-  applyAnimation(nameElement.value, '24px');
-  applyAnimation(bioElement.value, '16px');
+  const fromParams = { opacity: 0.5, fontSize: 0 };
+  const toParams1 = { opacity: 1, fontSize: '24px', stagger: 0.04, ease: 'power1.out', duration: 0.2 };
+  const toParams2 = { opacity: 1, fontSize: '16px', stagger: 0.04, ease: 'power1.out', duration: 0.2 };
+  textSplitAnimation(nameElement.value, fromParams, toParams1);
+  textSplitAnimation(bioElement.value, fromParams, toParams2);
 
 });
 </script>
@@ -59,10 +43,10 @@ onMounted(async () => {
         <div class='avatar' ref="avatarElement">
         </div>
         <div class='info'>
-          <div class='name' ref="nameElement">&lt;/zDich&gt;</div>
+          <div class='name' ref="nameElement">💤zHyko</div>
           <div class='bio' ref="bioElement">"I truly present here"</div>
-          <div class='contact' ref="contactElement">zDichX@iCloud.com
-            <div><a href='https://zdich.montaigne.io/z-dich' ref="contact_aElement">💤Introduction(🇨🇳)</a></div>
+          <div class='contact' ref="contactElement">zDichX@iCloud.com<br>Click to Continue 🇨🇳
+            <!-- <div><a href='https://zdich.montaigne.io/z-dich' ref="contact_aElement">💤Introduction(🇨🇳)</a></div> -->
           </div>
         </div>
       </div>
@@ -113,7 +97,7 @@ onMounted(async () => {
     overflow: hidden;
     border-radius: 20px;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
-    filter: blur(20px);
+    /* filter: blur(20px); */
 }
 .avatar::before {
     content: '';
@@ -150,13 +134,13 @@ onMounted(async () => {
     overflow: visible;
     text-decoration: none;
     color: white;
-    -webkit-text-shadow: 0 0 4px #ffcc00;
+    /* -webkit-text-shadow: 0 0 4px #ffcc00;
     text-shadow: 
     0 0 1px #ffcc00,
     0 0 2px #ffcc00,
     0 0 4px #ffcc00,
     0 0 8px #ffcc00,
     0 0 16px #ffcc00;
-    filter: hue-rotate(0deg);
+    filter: hue-rotate(0deg); */
 }
 </style>

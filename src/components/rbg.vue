@@ -1,9 +1,16 @@
 <script setup lang='ts'>
 import { gsap } from 'gsap';
 import { onMounted, nextTick, ref } from 'vue';
+import { defineEmits } from 'vue';
+
 
 const rbgcontainerElement = ref<HTMLElement | null>(null);
 const rootbgElement = ref<HTMLElement | null>(null);
+
+const emit = defineEmits<{
+  (e: 'messageSent', message: string): void;
+  (e: 'destroy', message: string): void;
+}>();
 
 onMounted(async () => {
     await nextTick();
@@ -14,9 +21,12 @@ onMounted(async () => {
         gsap.to(rbgcontainerElement.value, {
             duration: 1, 
             delay: 1,
-            scale: 0.2,
+            scale: 0,
             filter: 'blur(20px)',
             ease: 'power4.inOut',
+            onComplete: () => {
+            emit('destroy', 'Animation completed');
+            }
         });
     }
     
@@ -37,7 +47,7 @@ onMounted(async () => {
     svgPath.style.strokeDasharray = length.toString();
     svgPath.style.strokeDashoffset = length.toString();
     
-    console.log(index, -0.05 * index ** 2 + 0.4 * index)
+    // console.log(index, -0.05 * index ** 2 + 0.4 * index)
 
     gsap.fromTo(svgPath, 
       { 
@@ -49,8 +59,6 @@ onMounted(async () => {
         duration: 1,
         ease: 'power2.inOut',
         delay: -0.03125 * index ** 2 + 0.25 * index,
-        onStart: () => {
-        },
       }
     );
   });
@@ -112,7 +120,7 @@ onMounted(async () => {
     max-width: 80vw;
     max-height: 20vh;
     z-index: -1;
-    border: 0.5em dashed white;
+    border: 8px dashed transparent;
     border-radius: 30px;
     padding-top: 20px;
     padding-bottom: 20px;
