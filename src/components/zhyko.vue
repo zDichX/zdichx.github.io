@@ -22,7 +22,7 @@ onMounted(async () => {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: clamp(8rem, 15vw, 16rem);
+    font-size: clamp(6rem, 15vw, 16rem);
     font-weight: 900;
     z-index: 2;
     overflow: hidden;

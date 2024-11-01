@@ -9,7 +9,7 @@
     <p>（也许）是正常人</p>
     <ul>
     <li>偶尔分享一些零碎的想法</li>
-    <li>中文/ English / Google Translate ✔️</li>
+    <li>中文 / English / Google Translate ✔️</li>
     <li>移动端音游人 各种音游都玩一点<del>（买不起板子和曲包</del></li>
     <ul>
         <li>不是乌蒙池！！！</li>
