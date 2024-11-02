@@ -4,7 +4,7 @@
 
 <template>
 
-<div class="text"><h2>zHyko!</h2>
+<div class="text"><h2>zHyko!💤</h2>
     <p>读作 /ˈzaɪkoʊ/ 或 /ziːˈhaɪkoʊ/，是曾用名 zhyzx 和 空 的结合，跟 zDich 是同一人（</p>
     <p>（也许）是正常人</p>
     <ul>
@@ -12,7 +12,7 @@
     <li>中文 / English / Google Translate ✔️</li>
     <li>移动端音游人 各种音游都玩一点<del>（买不起板子和曲包</del></li>
     <ul>
-        <li>不是乌蒙池！！！</li>
+        <li><del>不是乌蒙池！！！</del></li>
     </ul>
     <li>俄亥俄州立大学休闲玩家</li>
     <ul>
@@ -41,6 +41,7 @@
   font-weight: 900;
   font-size: 20px;
   overflow: hidden;
+  padding: 10px;
 }
 
 .comming {

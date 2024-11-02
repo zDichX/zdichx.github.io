@@ -43,9 +43,9 @@ onMounted(async () => {
         <div class='avatar' ref="avatarElement">
         </div>
         <div class='info'>
-          <div class='name' ref="nameElement">💤zHyko</div>
+          <div class='name' ref="nameElement">zHyko</div>
           <div class='bio' ref="bioElement">"I truly present here"</div>
-          <div class='contact' ref="contactElement">zDichX@iCloud.com<br>Click to Continue 🇨🇳
+          <div class='contact' ref="contactElement">zDichX@iCloud.com<br>Slide to Continue 🇨🇳
             <!-- <div><a href='https://zdich.montaigne.io/z-dich' ref="contact_aElement">💤Introduction(🇨🇳)</a></div> -->
           </div>
         </div>
