@@ -17,16 +17,18 @@ onMounted(async () => {
   rbgcontainerElement.value = document.querySelector('.rbgcontainer') as HTMLElement;
   signatureElement.value = document.querySelector('.signature') as HTMLElement;
 
-  const fromParams = { opacity: 0.5, scale: 0, margin: 20};
-  const toParams = { opacity: 1, scale: 1, stagger: 0.07, margin: 0,  ease: 'elastic.out(1,0.3)', duration: 2};
-  
+  const fromParams = { opacity: 0.5, rotate: -30, rotationX: 90};
+  const toParams = { opacity: 1, stagger: 0.07, rotationX: 0, rotate: 0, ease: 'elastic.out(1,0.3)', duration: 2};
+
   // timeline
   const tl = gsap.timeline();
 
   tl.to(".stripesContainer", { clipPath: "inset(0% 0% 0% 0%)", duration: 1, ease: "power4.inOut", delay: 1})
     .set(".signature", { display: "none" })
-    .to(".stripesContainer", { clipPath: "inset(0% 0% 0% 100%)", duration: 1, ease: "power4.inOut"})
-    .set(nameElement.value, { display: "flex", onComplete: () => {textSplitAnimation(nameElement.value, fromParams, toParams)}}, "-=0.5");
+    .to(".stripesContainer", { clipPath: "inset(0% 0% 0% 100%)", duration: 1, ease: "power4.in"})
+    .set(nameElement.value, { display: "flex", onComplete: () => {textSplitAnimation(nameElement.value, fromParams, toParams)}});
+
+  
 
   // if (rbgcontainerElement.value) {
   //     gsap.to(rbgcontainerElement.value, {
@@ -67,22 +69,16 @@ onMounted(async () => {
 
   
   // stripes
-  gsap.to(".stripes", {
-    x: "-50%",
-    duration: 2,
-    repeat: -1,
-    ease: "none"
-  });
-
+  gsap.to(".stripes", {x: "-50%",duration: 2,repeat: -1,ease: "none"});
+  // gsap.to(".rbgcontainer", {backgroundPositionY: "-100%",duration: 15,repeat: -1,ease: "none"});
 });
 </script>
 
 <template>
   <div class="rbgcontainer">
-  <div class="name" ref="nameElement">ZHYKO</div>
+    <div class="name" ref="nameElement">ZHYKO</div>
     <div class="stripesContainer">
-      <div class="stripes">
-      </div>
+      <div class="stripes"></div>
     </div>
     <div class="signature">
       <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 240 51">
@@ -122,8 +118,12 @@ onMounted(async () => {
 
 <style scoped>
 
+.rbgcontainer {
+  height: 100vh;
+}
+
 .name {
-  min-width: 80vw;
+  width: 100vw;
   position: absolute;
   transform: translate(-50%, -50%);
   top: 50%;
@@ -137,13 +137,9 @@ onMounted(async () => {
   overflow: hidden;
 }
 
-
-.rbgcontainer {
-  height: 100vh;
-}
 .stripesContainer {
   position: absolute;
-  height: 150px;
+  height: min(150px, 25vw);
   width: min(500px, 80vw);
   transform: translate(-50%, -50%);
   top: 50%;
