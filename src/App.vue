@@ -35,6 +35,7 @@ onMounted(async () => {
 
 <style scoped>
 .bg {
+  z-index: -99;
   position: fixed;
   width: 100vw;
   height: 100vh;
