@@ -1,16 +1,13 @@
 <script setup lang='ts'>
-import { ref } from 'vue'
+// import { ref } from 'vue'
 
-import rbg from './components/rbg.vue';
-import bg from './components/bg.vue';
-import card from './components/card.vue';
 import cards from './components/cards.vue';
-import zhyko from './components/zhyko.vue';
 import Introduction from './components/Introduction.vue';
+import mtitle from './components/mtitle.vue';
 
-const showRbg = ref<boolean>(false)
-const showBg = ref<boolean>(false)
-const showCard = ref<boolean>(false)
+// const showRbg = ref<boolean>(false)
+// const showBg = ref<boolean>(false)
+// const showCard = ref<boolean>(false)
 
 // onMounted(() => {
 //   const loadComponent = (refVar: { value: boolean }, delay: number): void => {
@@ -25,11 +22,7 @@ const showCard = ref<boolean>(false)
 </script>
 
 <template>
-
-  <rbg v-if="showRbg" />
-  <bg v-if="showBg" />
-  <card v-if="showCard" />
-  <zhyko />
+  <mtitle />
   <cards />
   <introduction />
 </template>

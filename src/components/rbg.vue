@@ -1,7 +1,6 @@
 <script setup lang='ts'>
 import { gsap } from 'gsap';
 import { onMounted, nextTick, ref } from 'vue';
-import { defineEmits } from 'vue';
 
 
 const rbgcontainerElement = ref<HTMLElement | null>(null);
@@ -103,7 +102,7 @@ onMounted(async () => {
       </div>
     </div>
   </template>
-<style>
+<style scoped>
 .rbgcontainer {
     position: fixed;
     height: 100vh;
