@@ -22,7 +22,7 @@ import mtitle from './components/mtitle.vue';
 //   })
 onMounted(async () => {
   await nextTick();
-  gsap.to(".bg", {backgroundPositionY: "-200%", duration: 30, repeat: -1, ease: "none"});
+  gsap.to(".bg", { backgroundPositionY: "-200%", duration: 30, repeat: -1, ease: "none" });
 })
 </script>
 
@@ -42,6 +42,6 @@ onMounted(async () => {
   top: 0;
   left: 0;
   background: radial-gradient(circle, #ffffff50 10%, transparent 10%);
-  background-size: 35px 35px;  
+  background-size: 35px 35px;
 }
 </style>
