@@ -84,7 +84,7 @@ onMounted(async () => {
       <div class="wrapper">
           <div class="graphic">( ﹁ ﹁ ) ~→</div>
           <div class="graphic">(/≧▽≦)/</div>
-          <div class="graphic" id="card"><rbg v-if="showRbg" /><card v-if="showCard"/></div>
+          <div class="graphic" id="card"><card v-if="showCard"/></div>
           <div class="graphic">\(≧▽≦\)</div>
           <div class="graphic">ヾ(•ω•`)o</div>
       </div>

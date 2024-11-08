@@ -17,16 +17,18 @@ onMounted(async () => {
   rbgcontainerElement.value = document.querySelector('.rbgcontainer') as HTMLElement;
   signatureElement.value = document.querySelector('.signature') as HTMLElement;
 
-  const fromParams = { opacity: 0.5, rotate: -30, rotationX: 90 };
-  const toParams = { opacity: 1, stagger: 0.07, rotationX: 0, rotate: 0,ease: 'elastic.out(1,0.3)', duration: 2 };
+  const fromParams = { opacity: 0.5, rotate: () => gsap.utils.random(-100, 100), rotationX: 90, y: () => gsap.utils.random(-100, 100) };
+  const toParams = { opacity: 1, rotate: () => gsap.utils.random(-20, 20), rotationX: 0, y: 0, stagger: 0.07, ease: 'elastic.out(1,0.3)', duration: 2 };
 
   // timeline
   const tl = gsap.timeline();
 
-  tl.to(".stripesContainer", { clipPath: "inset(0% 0% 0% 0%)", duration: 1, ease: "power4.inOut", delay: 1 })
+  tl.to(".signature", {scale: 0.5, opacity: 0, duration: 0.5, ease: "power4.in", delay: 1 })
+    .to(".stripesContainer", { clipPath: "inset(0% 0% 0% 0%)", duration: 1, ease: "power4.inOut"}, "<")
     .set(".signature", { display: "none" })
     .to(".stripesContainer", { clipPath: "inset(0% 0% 0% 100%)", duration: 1, ease: "power4.in" })
-    .set(nameElement.value, { display: "flex", onComplete: () => { textSplitAnimation(nameElement.value, fromParams, toParams) } });
+    .set(nameElement.value, { display: "flex", onComplete: () => { textSplitAnimation(nameElement.value, fromParams, toParams) } })
+    .to(nameElement.value, {letterSpacing: "0px", duration: 2, ease: "power4.out"});
 
 
   // if (rbgcontainerElement.value) {
@@ -68,7 +70,7 @@ onMounted(async () => {
 
 
   // stripes
-  gsap.to(".stripes", { x: "-50%", duration: 2, repeat: -1, ease: "none" });
+  gsap.to(".stripes", { x: "-42.5%", duration: 2, repeat: -1, ease: "none" });
   // gsap.to(".rbgcontainer", {backgroundPositionY: "-100%",duration: 15,repeat: -1,ease: "none"});
 });
 </script>
@@ -154,6 +156,7 @@ onMounted(async () => {
   font-weight: 900;
   z-index: 2;
   overflow: hidden;
+  letter-spacing: -50px;
 }
 
 .stripesContainer {
