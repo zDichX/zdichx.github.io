@@ -2,7 +2,6 @@
 import { ref, onMounted, nextTick } from 'vue';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import rbg from './rbg.vue';
 import card from './card.vue';
 
 const showRbg = ref(false);

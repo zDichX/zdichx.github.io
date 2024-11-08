@@ -18,7 +18,7 @@ onMounted(async () => {
   signatureElement.value = document.querySelector('.signature') as HTMLElement;
 
   const fromParams = { opacity: 0.5, rotate: -30, rotationX: 90 };
-  const toParams = { opacity: 1, stagger: 0.07, rotationX: 0, rotate: 0, ease: 'elastic.out(1,0.3)', duration: 2 };
+  const toParams = { opacity: 1, stagger: 0.07, rotationX: 0, rotate: 0,ease: 'elastic.out(1,0.3)', duration: 2 };
 
   // timeline
   const tl = gsap.timeline();
@@ -27,7 +27,6 @@ onMounted(async () => {
     .set(".signature", { display: "none" })
     .to(".stripesContainer", { clipPath: "inset(0% 0% 0% 100%)", duration: 1, ease: "power4.in" })
     .set(nameElement.value, { display: "flex", onComplete: () => { textSplitAnimation(nameElement.value, fromParams, toParams) } });
-
 
 
   // if (rbgcontainerElement.value) {
