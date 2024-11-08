@@ -37,13 +37,13 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class='wrapper'>
+  <div class='wrapper flex'>
     <div class='container' ref="containerElement">
-      <div class='card'>
-        <div class='avatar' ref="avatarElement">
+      <div class='card flex'>
+        <div class='avatar flex' ref="avatarElement">
         </div>
         <div class='info'>
-          <div class='name' ref="nameElement">zHyko</div>
+          <div class='name' ref="nameElement">zHyco</div>
           <div class='bio' ref="bioElement">"I truly present here"</div>
           <div class='contact' ref="contactElement">zDichX@iCloud.com<br>还没想好这里写什么qwq
             <!-- <div><a href='https://zdich.montaigne.io/z-dich' ref="contact_aElement">💤Introduction(🇨🇳)</a></div> -->
@@ -58,9 +58,6 @@ onMounted(async () => {
 .wrapper {
   width: 100vw;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   /* overflow: hidden; */
 }
 
@@ -77,9 +74,6 @@ onMounted(async () => {
   background: linear-gradient(135deg, #7EE8FA, #EEC0C6);
   border-radius: 20px;
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 20px;
   max-width: 80vw;
   height: 150px;
@@ -90,9 +84,6 @@ onMounted(async () => {
   position: relative;
   background: linear-gradient(135deg, #ffcc00, #ff9900);
   background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-size: 24px;
   font-weight: bold;
   min-width: 150px;

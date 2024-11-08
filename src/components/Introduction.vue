@@ -3,8 +3,8 @@
 </script>
 
 <template>
-  <div class="text">
-    <h2>zHyko!💤</h2>
+  <div class="text flex">
+    <h2>zHyco!💤</h2>
     <p>读作 /ˈzaɪkoʊ/ 或 /ziːˈhaɪkoʊ/，是曾用名 zhyzx 和 空 的结合，跟 zDich 是同一人（</p>
     <p>（也许）是正常人</p>
     <ul>
@@ -34,10 +34,7 @@
 <style scoped>
 .text {
   height: 200vh;
-  display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   font-weight: 900;
   font-size: 20px;
   overflow: hidden;

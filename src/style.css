@@ -7,9 +7,24 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   /* font-family: 'PlaypenSans-Bold', sans-serif; */
 }
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.absolute {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+
 :root {
   overflow-x: hidden;
 }
+
 /* 
 @font-face {
   font-family: 'PlaypenSans-Bold';

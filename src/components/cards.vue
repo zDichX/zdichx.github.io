@@ -114,7 +114,6 @@ section {
 }
 
 .graphic {
-
   width: 360px;
   height: 180px;
   border: 10px solid white;
