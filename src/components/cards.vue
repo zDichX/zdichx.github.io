@@ -4,7 +4,6 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import card from './card.vue';
 
-const showRbg = ref(false);
 const showCard = ref(false);
 
 onMounted(async () => {
