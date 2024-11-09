@@ -78,7 +78,7 @@ onMounted(async () => {
 
 <template>
   <div class="rbgcontainer">
-    <div class="name flex absolute" ref="nameElement">ZHYCO</div>
+    <div class="name flex absolute" ref="nameElement">ZHYKO</div>
     <div class="stripesContainer absolute">
       <div class="stripes"></div>
     </div>

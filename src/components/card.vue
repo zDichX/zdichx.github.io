@@ -43,7 +43,7 @@ onMounted(async () => {
         <div class='avatar flex' ref="avatarElement">
         </div>
         <div class='info'>
-          <div class='name' ref="nameElement">zHyco</div>
+          <div class='name' ref="nameElement">zHyko</div>
           <div class='bio' ref="bioElement">"I truly present here"</div>
           <div class='contact' ref="contactElement">zDichX@iCloud.com<br>还没想好这里写什么qwq
             <!-- <div><a href='https://zdich.montaigne.io/z-dich' ref="contact_aElement">💤Introduction(🇨🇳)</a></div> -->

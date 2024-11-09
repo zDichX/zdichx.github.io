@@ -4,7 +4,7 @@
 
 <template>
   <div class="text flex">
-    <h2>zHyco!💤</h2>
+    <h2>zHyko!💤</h2>
     <p>读作 /ˈzaɪkoʊ/ 或 /ziːˈhaɪkoʊ/，是曾用名 zhyzx 和 空 的结合，跟 zDich 是同一人（</p>
     <p>（也许）是正常人</p>
     <ul>
