@@ -1,7 +1,7 @@
 <script setup lang='ts'>
 import { gsap } from 'gsap';
 import { onMounted, nextTick, ref } from 'vue';
-import { textSplitAnimation } from '../utils/textSplitAnimation';
+import { textSplit } from '../utils/textSplit';
 import handwriting from '../components/handwriting.vue';
 
 const rbgcontainerElement = ref<HTMLElement | null>(null);
@@ -19,18 +19,22 @@ onMounted(async () => {
   signatureElement.value = document.querySelector('.signature') as HTMLElement;
 
   const fromParams = { opacity: 0.5, rotate: () => gsap.utils.random(-100, 100), rotationX: 90, y: () => gsap.utils.random(-100, 100) };
-  const toParams = { opacity: 1, rotate: () => gsap.utils.random(-10, 10), rotationX: 0, y: 0, stagger: 0.07, ease: 'elastic.out(1,0.3)', duration: 2 };
+  const toParams = { opacity: 1, rotate: () => gsap.utils.random(-20, 20), rotationX: 0, y: 0, stagger: 0.07, ease: 'elastic.out(1,0.3)', duration: 2 };
 
   // timeline
+
   const tl = gsap.timeline();
 
+  textSplit(nameElement.value, "char1")
   tl.to(".signature", {scale: 0.5, opacity: 0, duration: 0.5, ease: "power4.in", delay: 1 })
-    .to(".stripesContainer", { clipPath: "inset(0% 0% 0% 0%)", duration: 1, ease: "power4.inOut"}, "<")
+    .to(".stripesContainer", { clipPath: "inset(0% 0% 0% 0%)", duration: 1, ease: "power4.inOut" }, "<")
     .set(".signature", { display: "none" })
     .to(".stripesContainer", { clipPath: "inset(0% 0% 0% 100%)", duration: 1, ease: "power4.in" })
-    .set(nameElement.value, { display: "flex", onComplete: () => { textSplitAnimation(nameElement.value, fromParams, toParams) } })
-    .to(nameElement.value, {letterSpacing: "-10px", duration: 2, ease: "power4.out"});
-
+    .set(nameElement.value, { display: "flex" })
+    .fromTo(".char1", fromParams, toParams)
+    .to(nameElement.value, { letterSpacing: "0px", duration: 2, ease: "power4.out" }, "<")
+    .to(nameElement.value, { letterSpacing: "-10px", duration: 1, ease: "power4.out" })
+    .to(".char1", { rotate: 0, duration: 1, ease: "power4.out" }, "<");
 
   // if (rbgcontainerElement.value) {
   //     gsap.to(rbgcontainerElement.value, {
@@ -94,6 +98,7 @@ onMounted(async () => {
 }
 
 .name {
+  height: 100vh;
   width: 100vw;
   display: none;
   font-size: clamp(6rem, 15vw, 16rem);
@@ -101,7 +106,7 @@ onMounted(async () => {
   z-index: 2;
   overflow: hidden;
   letter-spacing: -50px;
-  text-shadow: 0.8vw 1vw 0 wheat;
+  /* text-shadow: 0 0 20px white; */
 }
 
 .stripesContainer {

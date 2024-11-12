@@ -1,7 +1,7 @@
 <script setup lang='ts'>
 import { gsap } from 'gsap';
 import { onMounted, nextTick, ref } from 'vue';
-import { textSplitAnimation } from '../utils/textSplitAnimation';
+import { textSplit } from '../utils/textSplit';
 
 const containerElement = ref<HTMLElement | null>(null);
 const contactElement = ref<HTMLElement | null>(null);
@@ -21,17 +21,13 @@ onMounted(async () => {
 
   if (avatarElement.value && containerElement.value && contactElement.value) {
     gsap.to(containerElement.value, { duration: 1.5, delay: 0, opacity: 1, scale: 1, ease: 'elastic.out(0.8, 0.5)' });
-    // gsap.to(avatarElement.value, {duration: 0.5, delay: 0.1, filter:'blur(0px)', ease: 'power4.inOut'});
     gsap.to(contactElement.value, { duration: 1, delay: 0.8, opacity: 1, marginTop: '0px', ease: 'power4.inOut' });
-    // gsap.to(contact_aElement.value, {duration: 5, repeat: -1, filter: "hue-rotate(360deg)", ease: 'none'})
   }
 
-
   const fromParams = { opacity: 0.5, fontSize: 0 };
-  // const toParams1 = { opacity: 1, fontSize: '24px', stagger: 0.04, ease: 'power1.out', duration: 0.2 };
   const toParams2 = { opacity: 1, fontSize: '16px', stagger: 0.04, ease: 'power1.out', duration: 0.2 };
-  // textSplitAnimation(nameElement.value, fromParams, toParams1);
-  textSplitAnimation(bioElement.value, fromParams, toParams2);
+  textSplit(bioElement.value, "cardChar");
+  gsap.fromTo(".cardChar", fromParams, toParams2);
 
 });
 </script>

@@ -1,9 +1,6 @@
-import gsap from "gsap";
-
-export const textSplitAnimation = (
+export const textSplit = (
   element: HTMLElement | null,
-  fromParams: gsap.TweenVars,
-  toParams: gsap.TweenVars
+  className: string
 ) => {
   if (element) {
     const text = element.textContent || "";
@@ -14,11 +11,11 @@ export const textSplitAnimation = (
     characters.forEach((char) => {
       const span = document.createElement("span");
       span.textContent = char;
-      span.className = "char";
+      span.className = className;
       element.appendChild(span);
     });
 
-    const name = element.querySelectorAll(".char");
-    gsap.fromTo(name, fromParams, toParams);
+    // const name = element.querySelectorAll(`.${className}`);
+    // gsap.fromTo(name, fromParams, toParams);
   }
 };
