@@ -16,13 +16,16 @@ const handleResize = async () => {
 
 // 在组件挂载时添加事件监听器
 onMounted(() => {
-  window.addEventListener("resize", handleResize);
+  let previousWidth = window.innerWidth;
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth !== previousWidth) {
+      handleResize();
+      previousWidth = window.innerWidth;
+    }
+  })
 });
 
-// 在组件卸载前移除事件监听器
-onBeforeUnmount(() => {
-  window.removeEventListener("resize", handleResize);
-});
 </script>
 
 <template>

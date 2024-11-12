@@ -29,7 +29,7 @@ onMounted(async () => {
   const tl = gsap.timeline();
 
   textSplit(nameElement.value, "char1")
-  tl.to(".signature", {scale: 0.5, opacity: 0, duration: 0.5, ease: "power4.in", delay: 1 })
+  tl.to(".signature", {opacity: 0.5, duration: 0.5, ease: "power4.in", delay: 1 })
     .to(".stripesContainer", { clipPath: "inset(0% 0% 0% 0%)", duration: 1, ease: "power4.inOut" }, "<")
     .set(".signature", { display: "none" })
     .to(".stripesContainer", { clipPath: "inset(0% 0% 0% 100%)", duration: 1, ease: "power4.in" })
@@ -38,7 +38,8 @@ onMounted(async () => {
     .to(nameElement.value, { letterSpacing: "0px", duration: 2, ease: "power4.out" }, "<")
     .to(".cornerBox", { width: () => `${nameElement.value?.offsetWidth}px`, height: () => `${nameElement.value?.offsetHeight}px`, duration: 2, ease: "power4.inOut" }, "-=2")
     .to(".char1", { rotate: 0, duration: 1, ease: "power4.out" }, "-=1")
-    .to(nameElement.value, { scale: 0.8, duration: 1, ease: "power4.out" }, "<");
+    .to(nameElement.value, { scale: 0.8, duration: 1, ease: "power4.out" }, "<")
+    ;
   // if (rbgcontainerElement.value) {
   //     gsap.to(rbgcontainerElement.value, {
   //         duration: 1, 
@@ -138,14 +139,9 @@ onMounted(async () => {
 
 .signature {
   width: min(500px, 80vw);
+  z-index: -5;
   opacity: 0;
   filter: drop-shadow(0 0 4px white);
-
-  z-index: -1;
-  border: 8px dashed transparent;
-  border-radius: 30px;
-  padding-top: 20px;
-  padding-bottom: 20px;
   /* will-change: transform,filter; */
 }
 
@@ -192,12 +188,5 @@ onMounted(async () => {
   right: 0;
   border-width: 0 4px 4px 0;
 }
-
-
-
-
-
-
-
 
 </style>
