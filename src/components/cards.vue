@@ -37,8 +37,8 @@ onMounted(async () => {
           const x = '100%';
           // const xEnd = (window.innerWidth / 2) - (w.scrollWidth / 2)
           const xEnd = section.offsetWidth - w.scrollWidth
-          console.log(`window.innerWidth: ${window.innerWidth}, w.scrollWidth: ${w.scrollWidth}, section.offsetWidth: ${section.offsetWidth}`)
-          console.log(`xEnd: ${xEnd}`)
+          // console.log(`window.innerWidth: ${window.innerWidth}, w.scrollWidth: ${w.scrollWidth}, section.offsetWidth: ${section.offsetWidth}`)
+          // console.log(`xEnd: ${xEnd}`)
           gsap.fromTo(w, { x: x }, {
             x: xEnd,
             scrollTrigger: {
@@ -134,7 +134,6 @@ section {
 .text {
   font-size: clamp(8rem, 15vw, 16rem);
   line-height: 1;
-  font-weight: 900;
   width: 100vw;
   height: 100vh;
   overflow: hidden;

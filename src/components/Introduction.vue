@@ -35,7 +35,6 @@
 .text {
   height: 200vh;
   flex-direction: column;
-  font-weight: 900;
   font-size: 20px;
   overflow: hidden;
   padding: 10px;

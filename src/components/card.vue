@@ -81,7 +81,6 @@ onMounted(async () => {
   background: linear-gradient(135deg, #ffcc00, #ff9900);
   background-size: cover;
   font-size: 24px;
-  font-weight: bold;
   min-width: 150px;
   min-height: 150px;
   overflow: hidden;
@@ -100,7 +99,6 @@ onMounted(async () => {
 }
 
 .info {
-  font-weight: bold;
   position: relative;
   display: flex;
   flex-direction: column;

@@ -15,14 +15,17 @@ const nameElement = ref<HTMLElement | null>(null);
 
 onMounted(async () => {
   await nextTick();
+
+
+
   rbgcontainerElement.value = document.querySelector('.rbgcontainer') as HTMLElement;
   signatureElement.value = document.querySelector('.signature') as HTMLElement;
 
+
   const fromParams = { opacity: 0.5, rotate: () => gsap.utils.random(-100, 100), rotationX: 90, y: () => gsap.utils.random(-100, 100) };
-  const toParams = { opacity: 1, rotate: () => gsap.utils.random(-20, 20), rotationX: 0, y: 0, stagger: 0.07, ease: 'elastic.out(1,0.3)', duration: 2 };
+  const toParams = { opacity: 1, rotate: () => gsap.utils.random(-30, 30), rotationX: 0, y: 0, stagger: 0.07, ease: 'elastic.out(1,0.3)', duration: 2};
 
   // timeline
-
   const tl = gsap.timeline();
 
   textSplit(nameElement.value, "char1")
@@ -33,9 +36,9 @@ onMounted(async () => {
     .set(nameElement.value, { display: "flex" })
     .fromTo(".char1", fromParams, toParams)
     .to(nameElement.value, { letterSpacing: "0px", duration: 2, ease: "power4.out" }, "<")
-    .to(nameElement.value, { letterSpacing: "-10px", duration: 1, ease: "power4.out" })
-    .to(".char1", { rotate: 0, duration: 1, ease: "power4.out" }, "<");
-
+    .to(".cornerBox", { width: () => `${nameElement.value?.offsetWidth}px`, height: () => `${nameElement.value?.offsetHeight}px`, duration: 2, ease: "power4.inOut" }, "-=2")
+    .to(".char1", { rotate: 0, duration: 1, ease: "power4.out" }, "-=1")
+    .to(nameElement.value, { scale: 0.8, duration: 1, ease: "power4.out" }, "<");
   // if (rbgcontainerElement.value) {
   //     gsap.to(rbgcontainerElement.value, {
   //         duration: 1, 
@@ -82,6 +85,12 @@ onMounted(async () => {
 
 <template>
   <div class="rbgcontainer">
+    <div class="cornerBox absolute">
+      <div class="corner corner-tl"></div> <!-- 左上角 -->
+      <div class="corner corner-tr"></div> <!-- 右上角 -->
+      <div class="corner corner-bl"></div> <!-- 左下角 -->
+      <div class="corner corner-br"></div> <!-- 右下角 -->
+    </div>
     <div class="name flex absolute" ref="nameElement">ZHYKO</div>
     <div class="stripesContainer absolute">
       <div class="stripes"></div>
@@ -98,16 +107,16 @@ onMounted(async () => {
 }
 
 .name {
-  height: 100vh;
-  width: 100vw;
+  padding: 0 30px;
   display: none;
   font-size: clamp(6rem, 15vw, 16rem);
-  font-weight: 900;
   z-index: 2;
-  overflow: hidden;
+  overflow: visible;
   letter-spacing: -50px;
   /* text-shadow: 0 0 20px white; */
+  /* border: 30px solid white; */
 }
+
 
 .stripesContainer {
   height: min(150px, 25vw);
@@ -139,5 +148,56 @@ onMounted(async () => {
   padding-bottom: 20px;
   /* will-change: transform,filter; */
 }
+
+.cornerBox {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+
+.corner {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  background-color: transparent;
+  border-style: solid;
+  border-color: white;
+}
+
+/* 左上角 */
+.corner-tl {
+  top: 0;
+  left: 0;
+  border-width: 4px 0 0 4px;
+}
+
+/* 右上角 */
+.corner-tr {
+  top: 0;
+  right: 0;
+  border-width: 4px 4px 0 0;
+}
+
+/* 左下角 */
+.corner-bl {
+  bottom: 0;
+  left: 0;
+  border-width: 0 0 4px 4px;
+}
+
+/* 右下角 */
+.corner-br {
+  bottom: 0;
+  right: 0;
+  border-width: 0 4px 4px 0;
+}
+
+
+
+
+
+
+
 
 </style>

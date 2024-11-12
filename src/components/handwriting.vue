@@ -60,5 +60,6 @@
 <style scoped>
 svg {
   overflow: visible;
+  z-index: -5;
 }
 </style>
