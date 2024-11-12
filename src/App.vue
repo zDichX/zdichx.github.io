@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-import { ref, onMounted, nextTick, onBeforeUnmount } from 'vue';
+import { ref, onMounted, nextTick } from 'vue';
 import cards from './components/cards.vue';
 import Introduction from './components/Introduction.vue';
 import mtitle from './components/mtitle.vue';
