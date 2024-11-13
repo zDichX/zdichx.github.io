@@ -4,10 +4,9 @@ import { onMounted, nextTick, ref } from 'vue';
 import { textSplit } from '../utils/textSplit';
 import handwriting from '../components/handwriting.vue';
 
-const rbgcontainerElement = ref<HTMLElement | null>(null);
 const signatureElement = ref<HTMLElement | null>(null);
-
 const nameElement = ref<HTMLElement | null>(null);
+const stripesContainerElement = ref<HTMLElement | null>(null);
 // const emit = defineEmits<{
 //   (e: 'messageSent', message: string): void;
 //   (e: 'destroy', message: string): void;
@@ -16,48 +15,22 @@ const nameElement = ref<HTMLElement | null>(null);
 onMounted(async () => {
   await nextTick();
 
-
-
-  rbgcontainerElement.value = document.querySelector('.rbgcontainer') as HTMLElement;
-  signatureElement.value = document.querySelector('.signature') as HTMLElement;
-
-
-  const fromParams = { opacity: 0.5, rotate: () => gsap.utils.random(-100, 100), rotationX: 90, y: () => gsap.utils.random(-100, 100) };
-  const toParams = { opacity: 1, rotate: () => gsap.utils.random(-30, 30), rotationX: 0, y: 0, stagger: 0.07, ease: 'elastic.out(1,0.3)', duration: 2};
-
   // timeline
   const tl = gsap.timeline();
 
   textSplit(nameElement.value, "char1")
-  tl.to(".signature", {opacity: 0.5, duration: 0.5, ease: "power4.in", delay: 1 })
-    .to(".stripesContainer", { clipPath: "inset(0% 0% 0% 0%)", duration: 1, ease: "power4.inOut" }, "<")
-    .set(".signature", { display: "none" })
-    .to(".stripesContainer", { clipPath: "inset(0% 0% 0% 100%)", duration: 1, ease: "power4.in" })
+  tl.to(signatureElement.value, { opacity: 0.5, duration: 0.5, ease: "power4.in", delay: 1 })
+    .to(stripesContainerElement.value, { clipPath: "inset(0% 0% 0% 0%)", duration: 1, ease: "power4.inOut" }, "<")
+    .set(signatureElement.value, { display: "none" })
+    .to(stripesContainerElement.value, { clipPath: "inset(0% 0% 0% 100%)", duration: 1, ease: "power4.in" })
     .set(nameElement.value, { display: "flex" })
-    .fromTo(".char1", fromParams, toParams)
+    .fromTo(".char1", { opacity: 0.5, rotate: () => gsap.utils.random(-100, 100), rotationX: 90, y: () => gsap.utils.random(-100, 100) },
+      { opacity: 1, rotate: () => gsap.utils.random(-30, 30), rotationX: 0, y: 0, stagger: 0.07, ease: 'elastic.out(1,0.3)', duration: 2 })
     .to(nameElement.value, { letterSpacing: "0px", duration: 2, ease: "power4.out" }, "<")
-    .to(".cornerBox", { width: () => `${nameElement.value?.offsetWidth}px`, height: () => `${nameElement.value?.offsetHeight}px`, duration: 2, ease: "power4.inOut" }, "-=2")
+    .to(".cornerBox", { width: () => `${nameElement.value?.offsetWidth}px`, height: () => `${nameElement.value?.offsetHeight}px`, duration: 2, ease: "power4.inOut" }, "-=1.8")
     .to(".char1", { rotate: 0, duration: 1, ease: "power4.out" }, "-=1")
     .to(nameElement.value, { scale: 0.8, duration: 1, ease: "power4.out" }, "<")
     ;
-  // if (rbgcontainerElement.value) {
-  //     gsap.to(rbgcontainerElement.value, {
-  //         duration: 1, 
-  //         delay: 1,
-  //         filter: 'blur(0px)',
-  //         ease: 'power4.inOut',
-  //         onComplete: () => {
-  //         emit('destroy', 'Animation completed');
-  //         }
-  //     });
-  // }
-
-  if (signatureElement.value) {
-    gsap.to(signatureElement.value, {
-      duration: 0.5,
-      opacity: 1,
-    });
-  }
 
   const paths = document.querySelectorAll('.draw');
 
@@ -87,16 +60,16 @@ onMounted(async () => {
 <template>
   <div class="rbgcontainer">
     <div class="cornerBox absolute">
-      <div class="corner corner-tl"></div> <!-- 左上角 -->
-      <div class="corner corner-tr"></div> <!-- 右上角 -->
-      <div class="corner corner-bl"></div> <!-- 左下角 -->
-      <div class="corner corner-br"></div> <!-- 右下角 -->
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div>
+      <div class="corner corner-br"></div>
     </div>
     <div class="name flex absolute" ref="nameElement">ZHYKO</div>
-    <div class="stripesContainer absolute">
+    <div class="stripesContainer absolute" ref="stripesContainerElement">
       <div class="stripes"></div>
     </div>
-    <div class="signature absolute">
+    <div class="signature absolute" ref="signatureElement">
       <handwriting />
     </div>
   </div>
@@ -140,7 +113,7 @@ onMounted(async () => {
 .signature {
   width: min(500px, 80vw);
   z-index: -5;
-  opacity: 0;
+  opacity: 1;
   filter: drop-shadow(0 0 4px white);
   /* will-change: transform,filter; */
 }
@@ -161,32 +134,27 @@ onMounted(async () => {
   border-color: white;
 }
 
-/* 左上角 */
 .corner-tl {
   top: 0;
   left: 0;
   border-width: 4px 0 0 4px;
 }
 
-/* 右上角 */
 .corner-tr {
   top: 0;
   right: 0;
   border-width: 4px 4px 0 0;
 }
 
-/* 左下角 */
 .corner-bl {
   bottom: 0;
   left: 0;
   border-width: 0 0 4px 4px;
 }
 
-/* 右下角 */
 .corner-br {
   bottom: 0;
   right: 0;
   border-width: 0 4px 4px 0;
 }
-
 </style>
