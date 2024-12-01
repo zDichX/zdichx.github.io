@@ -1,27 +1,35 @@
 <script setup lang='ts'>
-import { ref, onMounted, nextTick } from 'vue';
+import { ref, onMounted, nextTick, Ref } from 'vue';
 import cards from './components/cards.vue';
 import Introduction from './components/Introduction.vue';
 import mtitle from './components/mtitle.vue';
 import bg from './components/bg.vue';
 
 const showDiv = ref(true);
+const showBg = ref(true);
 
-const handleResize = async () => {
+const handleResize = async (element: Ref<boolean, boolean>) => {
   // console.log("Window resized! New dimensions:", window.innerWidth, "x", window.innerHeight);
-  showDiv.value = false;
+  element.value = false;
   await nextTick();
-  showDiv.value = true;
+  element.value = true;
+  
+
 };
 
 // 在组件挂载时添加事件监听器
 onMounted(() => {
   let previousWidth = window.innerWidth;
+  let previousHeight = window.innerHeight;
 
   window.addEventListener("resize", () => {
     if (window.innerWidth !== previousWidth) {
-      handleResize();
+      handleResize(showDiv);
       previousWidth = window.innerWidth;
+    }
+    else if (window.innerHeight !== previousHeight) {
+      handleResize(showBg);
+      previousHeight = window.innerHeight;
     }
   })
 });
@@ -33,6 +41,6 @@ onMounted(() => {
     <mtitle />
     <cards />
     <introduction />
-    <bg />
+    <bg v-if="showBg"/>
   </div>
 </template>
