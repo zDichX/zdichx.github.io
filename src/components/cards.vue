@@ -10,8 +10,7 @@ onMounted(async () => {
   await nextTick();
   gsap.registerPlugin(ScrollTrigger);
 
-
-  const showDemo = () => {
+  const showCards = () => {
 
     document.body.style.overflow = 'auto';
     document.scrollingElement?.scrollTo(0, 0);
@@ -19,10 +18,16 @@ onMounted(async () => {
     gsap.utils.toArray<HTMLElement>('section').forEach((section, index) => {
       const w = section.querySelector<HTMLElement>('.wrapper');
       if (w) {
-        // const [x, xEnd] = (index % 2) 
-        //     ? ['100%', (w.scrollWidth - section.offsetWidth) * -1] 
-        //     : [w.scrollWidth * -1, 0];
 
+        if (section.offsetWidth == w.scrollWidth) {
+
+          const test = document.querySelectorAll('.graphic');
+          test.forEach(element => {element.innerHTML = '好像出问题了www';});
+
+          nextTick(() => { showCards(); });
+          return;
+        }
+        
         if (index % 2 === 0) {
           const x = w.scrollWidth * -1;
           const xEnd = 0;
@@ -37,8 +42,8 @@ onMounted(async () => {
           const x = '100%';
           // const xEnd = (window.innerWidth / 2) - (w.scrollWidth / 2)
           const xEnd = section.offsetWidth - w.scrollWidth
-          // console.log(`window.innerWidth: ${window.innerWidth}, w.scrollWidth: ${w.scrollWidth}, section.offsetWidth: ${section.offsetWidth}`)
-          // console.log(`xEnd: ${xEnd}`)
+          console.log(`window.innerWidth: ${window.innerWidth}, w.scrollWidth: ${w.scrollWidth}, section.offsetWidth: ${section.offsetWidth}`)
+          console.log(`xEnd: ${xEnd}`)
           gsap.fromTo(w, { x: x }, {
             x: xEnd,
             scrollTrigger: {
@@ -52,9 +57,7 @@ onMounted(async () => {
       }
     });
   };
-
-
-  showDemo();
+  showCards()
   // Simulate loading process
   // const interval = setInterval(() => {
   //     clearInterval(interval);
