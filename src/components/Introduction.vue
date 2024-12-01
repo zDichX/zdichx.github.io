@@ -55,7 +55,7 @@ onMounted(async () => {
 
 <style scoped>
 .introduction {
-  height: 125vh;
+  height: 150vh;
   flex-direction: column;
   font-size: clamp(1.2rem, 2vw + 0.5rem, 1.5rem);
   overflow: hidden;
