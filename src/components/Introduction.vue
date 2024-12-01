@@ -54,7 +54,7 @@ onMounted(async () => {
 
 <style scoped>
 .introduction {
-  height: 100vh;
+  height: 150vh;
   flex-direction: column;
   font-size: clamp(0.5rem, 2vw + 0.5rem, 1.5rem);
   overflow: hidden;
@@ -91,12 +91,13 @@ a, a:visited, a:hover {
   left: 10px;
   overflow: hidden;
   white-space: nowrap;
-  color: transparent;
+  color: gray;
+  opacity: 0;
   transition: 0.5s;
 }
 
 .text1:hover::after {
-  color: gray;
+  opacity: 1;
 }
 
 .text1::before {
