@@ -5,7 +5,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import card from './card.vue';
 
 const showCard = ref(false);
-const emit = defineEmits();
+
+const emit = defineEmits<{(event: 'destroy'): void;}>();
 
 onMounted(async () => {
   await nextTick();
