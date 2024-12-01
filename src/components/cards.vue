@@ -24,8 +24,8 @@ onMounted(async () => {
           const test = document.querySelectorAll('.graphic');
           test.forEach(element => {element.innerHTML = '好像出问题了www';});
 
-          nextTick(() => { showCards(); });
-          return;
+          // nextTick(() => { showCards(); });
+          // return;
         }
         
         if (index % 2 === 0) {
