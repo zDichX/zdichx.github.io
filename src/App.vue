@@ -17,7 +17,7 @@ const handleResize = async (element: Ref<boolean, boolean>) => {
 
 };
 
-const handleRestart = () => {
+const handleRestart = async () => {
   showCards.value = false;
   await nextTick();
   showCards.value = true;
