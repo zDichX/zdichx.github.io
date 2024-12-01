@@ -7,15 +7,22 @@ import bg from './components/bg.vue';
 
 const showDiv = ref(true);
 const showBg = ref(true);
+const showCards = ref(true);
 
 const handleResize = async (element: Ref<boolean, boolean>) => {
   // console.log("Window resized! New dimensions:", window.innerWidth, "x", window.innerHeight);
   element.value = false;
   await nextTick();
   element.value = true;
-  
 
 };
+
+const handleRestart = () => {
+  showCards.value = false;
+  await nextTick();
+  showCards.value = true;
+};
+
 
 // 在组件挂载时添加事件监听器
 onMounted(() => {
@@ -39,7 +46,7 @@ onMounted(() => {
 <template>
   <div v-if="showDiv">
     <mtitle />
-    <cards />
+    <cards v-if="showCards" @destroy="handleRestart" />
     <introduction />
     <bg v-if="showBg"/>
   </div>

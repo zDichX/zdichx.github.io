@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import card from './card.vue';
 
 const showCard = ref(false);
+const emit = defineEmits();
 
 onMounted(async () => {
   await nextTick();
@@ -22,10 +23,10 @@ onMounted(async () => {
         if (section.offsetWidth == w.scrollWidth) {
 
           const test = document.querySelectorAll('.graphic');
-          test.forEach(element => {element.innerHTML = '好像出问题了www';});
+          test.forEach(element => {element.innerHTML = '出问题了ww刷新一下吧';});
+          
+          emit('destroy');
 
-          // nextTick(() => { showCards(); });
-          // return;
         }
         
         if (index % 2 === 0) {
