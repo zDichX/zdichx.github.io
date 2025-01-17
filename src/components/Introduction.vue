@@ -36,9 +36,10 @@ onMounted(async () => {
 
     <div class="frienzTitle">🎉好朋友们🎉</div>
     <div class="textFrz flex">
-      <div class="text2" data-text="  我自己www">zDich</div>  
-      <div class="text2" data-text="  （？">ChatGPT</div>
-      <div class="text2" data-text="  ⬅Best Frd">DiCH</div>
+      <div class="text2" data-text=" 我自己www">zDich</div>  
+      <div class="text2" data-text=" （？">ChatGPT</div>
+      <div class="text2" data-text=" ⬅Best Frd">DiCH</div>
+      <div class="text2" data-text=" 不是朋友的朋友">一只邮箱里的小朋友</div>
       <div class="text2" data-text="...">UPDATING</div>
     </div>
 
@@ -49,7 +50,7 @@ onMounted(async () => {
 
 <style scoped>
 .introduction {
-  height: 150vh;
+  height: 200vh;
   flex-direction: column;
   font-size: clamp(1.2rem, 2vw + 0.5rem, 1.5rem);
   overflow: hidden;
