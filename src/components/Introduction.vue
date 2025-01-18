@@ -44,6 +44,10 @@ onMounted(async () => {
       <div class="text2" data-text=" with tons of 😨">shft8</div>
       <div class="text2" data-text="：可爱猫娘">Lazer</div>
       <div class="text2" data-text=" daily daily neuro">神性</div>
+      <div class="text2" data-text=" 高质量人类">Little Frost</div>
+      <div class="text2" data-text=" 热情且非常可爱!">洸縁さんです</div>
+      <div class="text2" data-text=" 古典二次元（">予米子</div>
+
 
       <div class="text2" data-text="...">UPDATING</div>
     </div>
@@ -55,7 +59,7 @@ onMounted(async () => {
 
 <style scoped>
 .introduction {
-  height: 250vh;
+  height: 300vh;
   flex-direction: column;
   font-size: clamp(1.2rem, 2vw + 0.5rem, 1.5rem);
   overflow: hidden;
