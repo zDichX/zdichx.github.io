@@ -42,6 +42,9 @@ onMounted(async () => {
       <div class="text2" data-text=" 不是朋友的朋友">一只邮箱里的小朋友</div>
       <div class="text2" data-text=" mug boss">极度美艳的</div>
       <div class="text2" data-text=" with tons of 😨">shft8</div>
+      <div class="text2" data-text="：可爱猫娘">Lazer</div>
+      <div class="text2" data-text=" daily daily neuro">神性</div>
+
       <div class="text2" data-text="...">UPDATING</div>
     </div>
 
