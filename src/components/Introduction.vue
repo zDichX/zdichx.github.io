@@ -22,16 +22,15 @@ onMounted(async () => {
     <div class="textCtn flex">
       <div class="text1" data-text="经常出现逆天言论（">偶尔上推分享一些零碎的想法</div>  
       <div class="text1" data-text="在中中国人">中文 / English / Google Translate ✔️</div>
-      <div class="text1" data-text="买不起板子和曲包">移动端音游人 各种音游都玩一点，但是哪里典了</div>
-      <div class="text1" data-text="但不是乌蒙吃！！！">也玩一些其他平台的音游（俄亥俄州立大学休闲玩家）</div>
-      <div class="text1"><a href="https://osu.ppy.sh/users/16943258">>>>[OSU PROFILE LINK]>>></a></div>
+      <div class="text1" data-text="有人40L没进1min就打Tetra League我不说是谁">Tetrio A段萌新</div>
+      <div class="text1" data-text="但是哪里典了">休闲音游人，主玩俄亥俄州立大学，但各种移动端音游和类音游也都玩一点</div>
       <div class="text1" data-text="官zDich#5421，欢迎互7（">玩一款由鹰角网络自主开发运营的策略塔防类手游，但不玩一款开放世界冒险游戏</div>
       <div class="text1" data-text="遥遥领先">看数码的 不会技术</div>
-      <div class="text1" data-text="骂谁罕见">几乎不键政，但是关注/转推可能有</div>
+      <div class="text1" data-text="骂谁罕见">几乎不键政，但是关注列表可能有</div>
       <div class="text1" data-text="你们南通不要太荒谬">LGBTQ+友好</div>
       <div class="text1" data-text="自己去pixiv.net解决">不会有NSFW内容</div>
       <div class="text1" data-text="还好根本没人理我😎👌">淡推，有些消息不一定及时回</div>
-      <div class="text1" data-text="注意：缺乏表达能力">不太希望交朋友，但是关注回fo（限正常人，且有至少一次发推/转推）</div>
+      <div class="text1" data-text="年度涨fo高达-2人">不太希望交朋友，但是关注回fo（限正常人，且有至少一次发推/转推）</div>
     </div>
 
     <div class="frienzTitle">🎉好朋友们🎉</div>
@@ -47,7 +46,7 @@ onMounted(async () => {
       <div class="text2" data-text=" 高质量人类">Little Frost</div>
       <div class="text2" data-text=" 热情且非常可爱!">洸縁さんです</div>
       <div class="text2" data-text=" 古典二次元（">予米子</div>
-
+      <div class="text2" data-text=" 也许是新朋友？">飙车酱的好朋友</div>
 
       <div class="text2" data-text="...">UPDATING</div>
     </div>
