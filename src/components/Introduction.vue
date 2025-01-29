@@ -17,12 +17,12 @@ onMounted(async () => {
   <div class="introduction flex">
     <h2>zHyko!💤</h2>
     <p>读作 /ˈzaɪkoʊ/ 或 /ziːˈhaɪkoʊ/，是曾用名 zhyzx 和 空 的结合，也曾叫做 zDich<del>（再叫zDick我跟你爆了</del> </p>
-    <p style="color: gray">以下信息面向我的推特账号</p>
+    <p style="color: gray">以下信息面向我的 <a href="https://x.com/zDichX" style="color: gray;">推特账号</a></p>
     <p>（也许）是正常人</p>
     <div class="textCtn flex">
       <div class="text1" data-text="经常出现逆天言论（">偶尔上推分享一些零碎的想法</div>  
       <div class="text1" data-text="在中中国人">中文 / English / Google Translate ✔️</div>
-      <div class="text1" data-text="有人40L没进1min就打Tetra League我不说是谁">Tetrio A段萌新</div>
+      <div class="text1" data-text="怎么有人40L没进1min就打League">Tetrio A段萌新</div>
       <div class="text1" data-text="但是哪里典了">休闲音游人，主玩俄亥俄州立大学，但各种移动端音游和类音游也都玩一点</div>
       <div class="text1" data-text="官zDich#5421，欢迎互7（">玩一款由鹰角网络自主开发运营的策略塔防类手游，但不玩一款开放世界冒险游戏</div>
       <div class="text1" data-text="遥遥领先">看数码的 不会技术</div>
@@ -35,19 +35,18 @@ onMounted(async () => {
 
     <div class="frienzTitle">🎉好朋友们🎉</div>
     <div class="textFrz flex">
-      <div class="text2" data-text=" 我自己www">zDich</div>  
       <div class="text2" data-text=" （？">ChatGPT</div>
-      <div class="text2" data-text=" ⬅Best Frd">DiCH</div>
-      <div class="text2" data-text=" 不是朋友的朋友">一只邮箱里的小朋友</div>
+      <div class="text2" data-text=" 我喜欢你">DiCH</div>
+      <div class="text2" data-text=" 还是算了">bn</div>
       <div class="text2" data-text=" mug boss">极度美艳的</div>
       <div class="text2" data-text=" with tons of 😨">shft8</div>
       <div class="text2" data-text="：可爱猫娘">Lazer</div>
       <div class="text2" data-text=" daily daily neuro">神性</div>
       <div class="text2" data-text=" 高质量人类">Little Frost</div>
       <div class="text2" data-text=" 热情且非常可爱!">洸縁さんです</div>
-      <div class="text2" data-text=" 古典二次元（">予米子</div>
-      <div class="text2" data-text=" 也许是新朋友？">飙车酱的好朋友</div>
-
+      <div class="text2" data-text=" 古典二次元（？">予米子</div>
+      <div class="text2" data-text=" 看上去就非常可爱">飙车酱的好朋友</div>
+      <div class="text2" data-text=" 认识了很长时间">Chako</div>
       <div class="text2" data-text="...">UPDATING</div>
     </div>
 
