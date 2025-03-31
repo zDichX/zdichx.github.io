@@ -1,7 +1,8 @@
 <script setup lang='ts'>
 import gsap from 'gsap';
 import { onMounted, nextTick } from 'vue';
-onMounted(() => {
+onMounted(async () => {
+  await nextTick();
   gsap.to(".bg", {
     backgroundPositionY: "-=35px",
     duration: 2,
