@@ -1,9 +1,19 @@
 <script setup lang='ts'>
 import gsap from 'gsap';
 import { onMounted, nextTick } from 'vue';
-onMounted(async () => {
-  await nextTick();
-  gsap.to(".bg", { backgroundPositionY: "-200%", duration: 30, repeat: -1, ease: "none" });
+onMounted(() => {
+  gsap.to(".bg", {
+    backgroundPositionY: "-=35px",
+    duration: 2,
+    repeat: -1,
+    ease: "none",
+    modifiers: {
+      backgroundPositionY: (y) => {
+        const yValue = parseFloat(y.replace('px', ''));
+        return `${yValue % 35}px`; // 通过取模让数值始终在[0,35)区间循环
+      }
+    }
+  });
 })
 </script>
 
