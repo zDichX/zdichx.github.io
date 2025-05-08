@@ -5,14 +5,16 @@ import { textSplit } from '../utils/textSplit';
 
 const udElement = ref<HTMLElement | null>(null);
 
+const clickBox = () => {
+    gsap.timeline()
+    .to(".text1", {filter: "blur(0px)", opacity: 1, ease: "power4.in", duration:0.6 })
+    .to(".text1Title", {scale: 0, ease: "power4.in", duration:0.6 }, "<")
+  }
+
 onMounted(async () => {
   await nextTick();
   textSplit(udElement.value, "ude")
   gsap.to(".ude", {y: "20px", ease: "sine.inOut", stagger: { each: 0.05, repeat: -1, yoyo: true}})
-
-  gsap.timeline({scrollTrigger: {trigger: ".text1", start: "center 40%", toggleActions: "restart none none reverse"}})
-    .to(".text1", {filter: "blur(0px)", opacity: 1, ease: "power4.in", duration:0.6 })
-    .to(".text1Title", {scale: 0, ease: "power4.in", duration:0.6 }, "<")
 
   document.querySelectorAll('.text1').forEach(element => {
   const original = element.querySelector('.original');
@@ -43,7 +45,12 @@ onMounted(async () => {
     <p>读作 /ˈzaɪkoʊ/ 或 /ziːˈhaɪkoʊ/，是曾用名 zhyzx 和 空 的结合，也曾叫做 zDich<del>（再叫zDick我跟你爆了</del> </p>
     <p>（也许）是正常人</p>
     <div class="textCtn flex">
-      <div class="text1Title absolute">以下信息面向我的<br><a href="https://x.com/zDichX" style="color: gray;">推特账号</a></div>
+      <div class="text1Title absolute">
+        <img src="../assets/triangular-warning-sign-svgrepo-com.svg" alt="icon" width="100px"/>
+        <div>这些信息面向我的<br></div>
+        <a href="https://x.com/zDichX" style="color: gray;">推特账号<br></a>
+        <button @click="clickBox" class="confirmButton">明白</button>
+      </div>
       <div class="text1">
         <span class="original">偶尔上推分享一些零碎的想法</span>
         <span class="hover">经常出现逆天言论（</span>
@@ -89,6 +96,8 @@ onMounted(async () => {
         <span class="hover">年度涨fo高达-2人</span>
       </div>
     </div>
+
+    <!-- 
     <div class="frienzTitle">🎉好朋友们🎉</div>
     <div class="textFrz flex">
       <div class="text2" data-text=" （？">ChatGPT</div>
@@ -104,7 +113,8 @@ onMounted(async () => {
       <div class="text2" data-text=" ">飙车酱的好朋友</div>
       <div class="text2" data-text=" 认识了很长时间">Chako</div>
       <div class="text2" data-text="...">UPDATING</div>
-    </div>
+    </div> 
+    -->
 
     <div class="ending flex" ref="udElement">UrPrettyCuteToday!</div>
       <div class="mobileText"><del>什么 你不知道每行介绍都可以点吗</del></div>
@@ -113,6 +123,7 @@ onMounted(async () => {
 </template>
 
 <style scoped>
+
 .introduction {
   height: 300vh;
   flex-direction: column;
@@ -130,6 +141,10 @@ a, a:visited, a:hover {
   color: white;
 }
 
+.confirmButton{
+  margin-top: 10px;
+}
+
 .textCtn, .textFrz {
   flex-direction: column;
   align-items: flex-start;
@@ -142,8 +157,9 @@ a, a:visited, a:hover {
 }
 
 .text1Title {
-  font-size: 2rem;
+  font-size: medium;
   text-align: center;
+  z-index: 2;
 }
 
 .text1 .hover {

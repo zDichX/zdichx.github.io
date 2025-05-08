@@ -4,9 +4,14 @@ body {
   border: 0;
   background-color: black;
   color: white;
-  font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
-  /* font-family: 'PlaypenSans-Bold', sans-serif; */
+}
+
+button {
+  min-width: 100px;
+  padding: 10px;
+  border-radius: 25px;
+  font-size: medium;
 }
 
 .flex {
@@ -26,8 +31,14 @@ body {
   overflow-x: hidden;
 }
 
-/* 
 @font-face {
-  font-family: 'PlaypenSans-Bold';
-  src: url('./assets/PlaypenSans-Bold.ttf') format('truetype');
-} */
+  font-family: 'MiSans';
+  src: url('./assets/MiSans-Semibold.woff2') format('woff2');
+  font-weight: bold;
+} 
+
+@font-face {
+  font-family: 'MiSans';
+  src: url('./assets/MiSans-Normal.woff2') format('woff2');
+  font-weight: normal;
+} 
