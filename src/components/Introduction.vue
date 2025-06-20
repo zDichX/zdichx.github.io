@@ -8,7 +8,12 @@ const udElement = ref<HTMLElement | null>(null);
 const clickBox = () => {
     gsap.timeline()
     .to(".text1", {filter: "blur(0px)", opacity: 1, ease: "power4.in", duration:0.6 })
-    .to(".text1Title", {scale: 0, ease: "power4.in", duration:0.6 }, "<")
+    .to(".text1Title", { scale: 1.5, opacity: 0, ease: "power4.inOut", duration:0.6, onComplete:() => {
+      const el = document.querySelector('.text1Title');
+      if (el && el.parentNode) {
+        el.parentNode.removeChild(el);
+      }
+    }}, "<")
   }
 
 onMounted(async () => {
@@ -46,9 +51,8 @@ onMounted(async () => {
     <p>（也许）是正常人</p>
     <div class="textCtn flex">
       <div class="text1Title absolute">
-        <img src="../assets/triangular-warning-sign-svgrepo-com.svg" alt="icon" width="100px"/>
-        <div>这些信息面向我的<br></div>
-        <a href="https://x.com/zDichX" style="color: gray;">推特账号<br></a>
+        <img src="../assets/triangular-warning-sign-svgrepo-com.svg" alt="icon" width="50px"/>
+        <div style="font-size: 1.6em;">这些信息指向我的<br><a href="https://x.com/zDichX">推特账号<br></a></div>
         <button @click="clickBox" class="confirmButton">明白</button>
       </div>
       <div class="text1">
@@ -64,8 +68,8 @@ onMounted(async () => {
         <span class="hover">定式批</span>
       </div>
       <div class="text1">
-        <span class="original">休闲音游人，主玩俄亥俄州立大学，但各种移动端音游和类音游也都玩一点</span>
-        <span class="hover">但是哪里典了</span>
+        <span class="original">休闲（退坑）音游人，玩过各种音游和类音游，俄亥俄州立大学也玩一点</span>
+        <span class="hover">但是哪里点了</span>
       </div>
       <div class="text1">
         <span class="original">玩一款由鹰角网络自主开发运营的策略塔防类手游，但不玩一款开放世界冒险游戏</span>
@@ -92,7 +96,7 @@ onMounted(async () => {
         <span class="hover">还好根本没人理我😎👌</span>
       </div>
       <div class="text1">
-        <span class="original">不太希望交朋友，但是关注回fo（限正常人，且有至少一次发推/转推）</span>
+        <span class="original">不太希望交朋友，但是关注回fo（限正常人）</span>
         <span class="hover">年度涨fo高达-2人</span>
       </div>
     </div>
@@ -117,7 +121,7 @@ onMounted(async () => {
     -->
 
     <div class="ending flex" ref="udElement">UrPrettyCuteToday!</div>
-      <div class="mobileText"><del>什么 你不知道每行介绍都可以点吗</del></div>
+      <div class="mobileText"><del>btw：每行介绍是可以点的</del></div>
 
   </div>
 </template>

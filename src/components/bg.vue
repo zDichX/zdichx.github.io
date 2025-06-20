@@ -20,6 +20,7 @@ onMounted(async () => {
 
 <template>
   <div class="bg"></div>
+  <div class="vignette absolute"></div>
 </template>
 
 <style scoped>
@@ -32,5 +33,15 @@ onMounted(async () => {
   left: 0;
   background: radial-gradient(circle, #ffffff50 10%, transparent 10%);
   background-size: 35px 35px;
+}
+
+.vignette {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -8;
+  background: radial-gradient(circle at center, 
+    rgba(0,0,0,0) 0%, 
+    rgba(0,0,0,0.7) 100%);
 }
 </style>

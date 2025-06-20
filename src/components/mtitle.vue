@@ -24,7 +24,7 @@ onMounted(async () => {
     .set(signatureElement.value, { display: "none" })
     .to(stripesContainerElement.value, { clipPath: "inset(0% 0% 0% 100%)", duration: 1, ease: "power4.in" })
     .set(nameElement.value, { display: "flex" })
-    .fromTo(".char1", { opacity: 0.5, rotate: () => gsap.utils.random(-100, 100), rotationX: 90, y: () => gsap.utils.random(-100, 100) },
+    .fromTo(".char1", { opacity: 0.5, rotate: () => gsap.utils.random(-100, 100), rotationX: 90, y: () => gsap.utils.random(-50, 50) },
       { opacity: 1, rotate: () => gsap.utils.random(-30, 30), rotationX: 0, y: 0, stagger: 0.07, ease: 'elastic.out(1,0.3)', duration: 2 })
     .to(nameElement.value, { letterSpacing: "0px", duration: 2, ease: "power4.out" }, "<")
     .to(".cornerBox", { height: () => `${nameElement.value?.offsetHeight}px`, duration: 1, ease: "power4.inOut" }, "-=1.8")
@@ -160,4 +160,8 @@ onMounted(async () => {
   right: 0;
   border-width: 0 4px 4px 0;
 }
+
+/* .cornerBox {
+  perspective: 1000px;
+} */
 </style>
