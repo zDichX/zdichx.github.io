@@ -24,14 +24,14 @@ onMounted(async () => {
     .set(signatureElement.value, { display: "none" })
     .to(stripesContainerElement.value, { clipPath: "inset(0% 0% 0% 100%)", duration: 1, ease: "power4.in" })
     .set(nameElement.value, { display: "flex" })
-    .fromTo(".char1", { opacity: 0.5, rotate: () => gsap.utils.random(-100, 100), rotationX: 90, y: () => gsap.utils.random(-50, 50) },
-      { opacity: 1, rotate: () => gsap.utils.random(-30, 30), rotationX: 0, y: 0, stagger: 0.07, ease: 'elastic.out(1,0.3)', duration: 2 })
+    .fromTo(".char1", { opacity: 0.5, y: (i) => (i % 2 === 0 ? -250 : 250) },
+      { opacity: 1,  y: 0, stagger: 0.05, ease: 'power4.out', duration: 0.6 })
     .to(nameElement.value, { letterSpacing: "0px", duration: 2, ease: "power4.out" }, "<")
-    .to(".cornerBox", { height: () => `${nameElement.value?.offsetHeight}px`, duration: 1, ease: "power4.inOut" }, "-=1.8")
-    .to(".cornerBox", { width: () => `${nameElement.value?.offsetWidth}px`, duration: 2, ease: "power4.inOut" }, "<")
+    .to(".cornerBox", { height: () => `${nameElement.value?.offsetHeight}px`, duration: 1, ease: "power4.inOut" }, "-=2")
+    .to(".cornerBox", { width: () => `${(nameElement.value?.offsetHeight ?? 0) * 2.8}px`, duration: 2, ease: "power4.inOut" }, "<")
     .to(".cornerBox", { backgroundColor: "#FFFFFF80", duration: 0.2}, "-=1.25")
     .to(".cornerBox", { backgroundColor: "#FFFFFF30", duration: 0.6}, "-=1.1")
-    .to(".char1", { rotate: 0, duration: 1, ease: "power4.out" }, "<")
+    // .to(".char1", { rotate: 0, duration: 1, ease: "power4.out" }, "<")
     .to(nameElement.value, { scale: 0.8, duration: 1, ease: "power4.out" }, "<")
     ;
 
@@ -90,6 +90,7 @@ onMounted(async () => {
   z-index: 2;
   overflow: visible;
   letter-spacing: -50px;
+  overflow: hidden;
   /* text-shadow: 0 0 20px white; */
   /* border: 30px solid white; */
 }
@@ -161,7 +162,4 @@ onMounted(async () => {
   border-width: 0 4px 4px 0;
 }
 
-/* .cornerBox {
-  perspective: 1000px;
-} */
 </style>

@@ -7,8 +7,9 @@ const udElement = ref<HTMLElement | null>(null);
 
 const clickBox = () => {
     gsap.timeline()
-    .to(".text1", {filter: "blur(0px)", opacity: 1, ease: "power4.in", duration:0.6 })
-    .to(".text1Title", { scale: 1.5, opacity: 0, ease: "power4.inOut", duration:0.6, onComplete:() => {
+    .to(".text1", {filter: "blur(0px)", opacity: 1, ease: "power4.inOut", duration:1 })
+    .to(".textCtn", {rotateY: 0, ease: "power4.inOut", duration:1}, "<")
+    .to(".text1Title", { opacity: 0, ease: "power4.inOut", duration:0.6, onComplete:() => {
       const el = document.querySelector('.text1Title');
       if (el && el.parentNode) {
         el.parentNode.removeChild(el);
@@ -137,7 +138,7 @@ onMounted(async () => {
 }
 
 .ending {
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin: auto 0;
 }
 
@@ -158,6 +159,22 @@ a, a:visited, a:hover {
   margin: 20px;
   padding: 20px;
   border-radius: 30px;
+
+  background-color: rgb(20, 20, 20);
+}
+
+.textCtn {
+  transform: perspective(1000px) rotateY(180deg);
+}
+
+.textCtn > .text1Title {
+  transform: rotateY(180deg);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* 让中心点对齐 */
+  transform: translate(-50%, -50%) rotateY(180deg);
+  width: 100%;
 }
 
 .text1Title {
