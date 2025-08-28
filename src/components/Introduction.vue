@@ -41,8 +41,7 @@ onMounted(async () => {
       trigger: ".textCtn",
       start: "top bottom",
       end: "bottom top",
-      scrub: true,
-      markers: true
+      scrub: true
     },
     rotateX: 30,
   });

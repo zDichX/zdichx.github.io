@@ -84,7 +84,7 @@ onMounted(async () => {
 }
 
 .name {
-  padding: 0 30px;
+  padding: 0 25px 0 30px;
   display: none;
   font-size: clamp(6rem, 15vw, 16rem);
   z-index: 2;
