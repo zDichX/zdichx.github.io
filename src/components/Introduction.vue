@@ -1,14 +1,27 @@
 <script setup lang="ts">
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ref, onMounted, nextTick } from 'vue';
 import { textSplit } from '../utils/textSplit';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const udElement = ref<HTMLElement | null>(null);
 
 const clickBox = () => {
+  let blurRemoved = false;
     gsap.timeline()
-    .to(".text1", {filter: "blur(0px)", opacity: 1, ease: "power4.inOut", duration:1 })
-    .to(".textCtn", {rotateY: 0, ease: "power4.inOut", duration:1}, "<")
+    .to(".textCtn", {rotateX: 0, rotateY: 0, ease: "power4.inOut", duration:1, 
+    onStart: () => {
+      const st = ScrollTrigger.getById("intro-rotate");
+      if (st) st.kill();
+    },
+    onUpdate: function () {
+      if (!blurRemoved && this.progress() >= 0.5) {
+        blurRemoved = true;
+        gsap.set(".text1", { filter: "blur(0px)", opacity: 1 });
+      }
+    }})
     .to(".text1Title", { opacity: 0, ease: "power4.inOut", duration:0.6, onComplete:() => {
       const el = document.querySelector('.text1Title');
       if (el && el.parentNode) {
@@ -21,6 +34,18 @@ onMounted(async () => {
   await nextTick();
   textSplit(udElement.value, "ude")
   gsap.to(".ude", {y: "20px", ease: "sine.inOut", stagger: { each: 0.05, repeat: -1, yoyo: true}})
+
+  gsap.fromTo(".textCtn", {rotateX: -30}, {
+    scrollTrigger: {
+      id: "intro-rotate", 
+      trigger: ".textCtn",
+      start: "top bottom",
+      end: "bottom top",
+      scrub: true,
+      markers: true
+    },
+    rotateX: 30,
+  });
 
   document.querySelectorAll('.text1').forEach(element => {
   const original = element.querySelector('.original');
@@ -81,7 +106,7 @@ onMounted(async () => {
         <span class="hover">遥遥领先</span>
       </div>
       <div class="text1">
-        <span class="original">几乎不键政，但是关注列表可能有</span>
+        <span class="original">几乎不键政</span>
         <span class="hover">骂谁罕见</span>
       </div>
       <div class="text1">
@@ -102,9 +127,11 @@ onMounted(async () => {
       </div>
     </div>
 
-    <!-- 
+    
     <div class="frienzTitle">🎉好朋友们🎉</div>
     <div class="textFrz flex">
+      <div class="text2" data-text="暂时还没有..."></div>
+      <!-- 
       <div class="text2" data-text=" （？">ChatGPT</div>
       <div class="text2" data-text=" ">DiCH</div>
       <div class="text2" data-text=" ">bn</div>
@@ -118,8 +145,9 @@ onMounted(async () => {
       <div class="text2" data-text=" ">飙车酱的好朋友</div>
       <div class="text2" data-text=" 认识了很长时间">Chako</div>
       <div class="text2" data-text="...">UPDATING</div>
+       -->
     </div> 
-    -->
+   
 
     <div class="ending flex" ref="udElement">UrPrettyCuteToday!</div>
       <div class="mobileText"><del>btw：每行介绍是可以点的</del></div>

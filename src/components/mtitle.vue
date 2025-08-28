@@ -26,7 +26,7 @@ onMounted(async () => {
     .set(nameElement.value, { display: "flex" })
     .fromTo(".char1", { opacity: 0.5, y: (i) => (i % 2 === 0 ? -250 : 250) },
       { opacity: 1,  y: 0, stagger: 0.05, ease: 'power4.out', duration: 0.6 })
-    .to(nameElement.value, { letterSpacing: "0px", duration: 2, ease: "power4.out" }, "<")
+    .to(nameElement.value, { letterSpacing: "10px", duration: 2, ease: "power4.out" }, "<")
     .to(".cornerBox", { height: () => `${nameElement.value?.offsetHeight}px`, duration: 1, ease: "power4.inOut" }, "-=2")
     .to(".cornerBox", { width: () => `${(nameElement.value?.offsetHeight ?? 0) * 2.8}px`, duration: 2, ease: "power4.inOut" }, "<")
     .to(".cornerBox", { backgroundColor: "#FFFFFF80", duration: 0.2}, "-=1.25")
@@ -91,10 +91,11 @@ onMounted(async () => {
   overflow: visible;
   letter-spacing: -50px;
   overflow: hidden;
+  font-weight: 900;
+  -webkit-text-stroke: 5px white;
   /* text-shadow: 0 0 20px white; */
   /* border: 30px solid white; */
 }
-
 
 .stripesContainer {
   height: min(150px, 25vw);
